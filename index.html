@@ -1,670 +1,1023 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Amit Soni Portfolio</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+<head>
+  <title>Amit Soni | Salesforce Developer</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Amit Soni – Salesforce Developer specializing in Apex, LWC, REST API integrations, Sales Cloud, Health Cloud, and Experience Cloud.">
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/aos.css">
 
-    <link rel="stylesheet" href="css/aos.css">
+  <style>
+    /* =====================================================
+       DESIGN TOKENS — Salesforce dark-first palette
+       Layout: sticky nav → hero → alternating sections
+    ===================================================== */
+    :root {
+      --bg:          #07101F;
+      --bg-2:        #0D1A2D;
+      --surface:     rgba(13, 26, 45, 0.85);
+      --accent:      #00A1E0;
+      --accent-2:    #0176D3;
+      --accent-glow: rgba(0, 161, 224, 0.12);
+      --accent-bdr:  rgba(0, 161, 224, 0.28);
+      --fg:          #EDF6FF;
+      --fg-muted:    #8BAAC4;
+      --fg-subtle:   #4B6A85;
+      --border:      rgba(139, 170, 196, 0.1);
+      --radius:      14px;
+      --radius-sm:   8px;
+      --ff-display:  'Space Grotesk', system-ui, sans-serif;
+      --ff-body:     'Inter', system-ui, sans-serif;
+    }
 
-    <link rel="stylesheet" href="css/ionicons.min.css">
-    
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
+    body {
+      font-family: var(--ff-body);
+      background: var(--bg);
+      color: var(--fg);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent-bdr); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-<style>
+    /* ===== NAVBAR ===== */
+    .sf-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 1rem 0;
+      background: rgba(7, 16, 31, 0.8);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+    .sf-nav.scrolled {
+      padding: 0.6rem 0;
+      background: rgba(7, 16, 31, 0.97);
+      border-bottom-color: var(--accent-bdr);
+    }
+    .nav-inner {
+      max-width: 1120px; margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: var(--ff-display); font-size: 1.25rem; font-weight: 700;
+      color: var(--fg); text-decoration: none;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .brand-cloud { color: var(--accent); font-size: 1rem; }
+    .nav-links { display: flex; gap: 0.2rem; list-style: none; align-items: center; }
+    .nav-links a {
+      color: var(--fg-muted); text-decoration: none;
+      font-size: 0.875rem; font-weight: 500;
+      padding: 0.4rem 0.8rem; border-radius: var(--radius-sm);
+      transition: all 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); background: var(--accent-glow); }
+    .nav-links .nav-cta {
+      background: var(--accent); color: #fff !important;
+      padding: 0.4rem 1.1rem; margin-left: 0.4rem;
+    }
+    .nav-links .nav-cta:hover { background: var(--accent-2); }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--fg); border-radius: 2px; transition: all 0.3s;
+    }
 
-/*======================================
-//--//-->   ABOUT
-======================================*/
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding-top: 5rem; padding-bottom: 4rem;
+    }
+    .hero-bg-radial {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 55% 55% at 72% 50%, rgba(1, 118, 211, 0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 35% 50% at 15% 25%, rgba(0, 161, 224, 0.07) 0%, transparent 55%);
+    }
+    .hero-grid-lines {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(0,161,224,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,161,224,0.025) 1px, transparent 1px);
+      background-size: 56px 56px;
+    }
+    .hero-inner {
+      max-width: 1120px; margin: 0 auto; padding: 0 1.5rem;
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr 240px; gap: 3rem; align-items: center;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      background: var(--accent-glow); border: 1px solid var(--accent-bdr);
+      color: var(--accent); font-size: 0.775rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.09em;
+      padding: 0.35rem 0.9rem; border-radius: 100px; margin-bottom: 1.4rem;
+    }
+    .hero-name {
+      font-family: var(--ff-display);
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      font-weight: 800; line-height: 1.1; color: var(--fg);
+      text-wrap: balance; margin-bottom: 0.4rem;
+    }
+    .hero-name .hi { color: var(--fg-muted); font-weight: 400; }
+    .hero-name .name { color: var(--accent); }
+    .hero-role {
+      font-family: var(--ff-display);
+      font-size: clamp(1rem, 2.5vw, 1.45rem);
+      font-weight: 500; color: var(--fg-muted); margin-bottom: 1.4rem;
+      min-height: 2.2rem;
+    }
+    .hero-role #typed { color: var(--accent); font-weight: 600; }
+    .cursor {
+      display: inline-block; width: 2px; height: 1.1em;
+      background: var(--accent); margin-left: 2px;
+      vertical-align: text-bottom; animation: blink 0.85s step-end infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .hero-desc {
+      color: var(--fg-muted); font-size: 1.025rem; line-height: 1.75;
+      max-width: 530px; margin-bottom: 2rem;
+    }
+    .hero-desc strong { color: var(--fg); font-weight: 600; }
+    .hero-actions { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-bottom: 2.2rem; }
+    .btn-primary {
+      background: var(--accent); color: #fff;
+      padding: 0.75rem 1.7rem; border-radius: var(--radius-sm);
+      text-decoration: none; font-weight: 600; font-size: 0.95rem;
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      border: 2px solid var(--accent); transition: all 0.22s;
+    }
+    .btn-primary:hover {
+      background: var(--accent-2); border-color: var(--accent-2);
+      transform: translateY(-2px); color: #fff; text-decoration: none;
+      box-shadow: 0 8px 28px rgba(0,161,224,0.4);
+    }
+    .btn-outline {
+      background: transparent; color: var(--fg);
+      padding: 0.75rem 1.7rem; border-radius: var(--radius-sm);
+      text-decoration: none; font-weight: 600; font-size: 0.95rem;
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      border: 2px solid var(--border); transition: all 0.22s;
+    }
+    .btn-outline:hover {
+      border-color: var(--accent); color: var(--accent);
+      background: var(--accent-glow); transform: translateY(-2px);
+      text-decoration: none;
+    }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.65rem; }
+    .hero-tag {
+      display: flex; align-items: center; gap: 0.35rem;
+      background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+      color: var(--fg-muted); font-size: 0.785rem; font-weight: 500;
+      padding: 0.3rem 0.7rem; border-radius: 100px;
+    }
+    .hero-tag i { color: var(--accent); font-size: 0.72rem; }
 
-.about-mf .box-shadow-full {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
+    /* Profile card */
+    .profile-card {
+      background: rgba(13,26,45,0.75);
+      border: 1px solid var(--accent-bdr);
+      border-radius: 20px; padding: 1.75rem 1.4rem;
+      text-align: center; backdrop-filter: blur(12px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px var(--accent-bdr);
+    }
+    .avatar {
+      width: 90px; height: 90px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--ff-display); font-size: 2rem; font-weight: 800; color: #fff;
+      margin: 0 auto 1rem;
+      border: 3px solid rgba(0,161,224,0.45);
+      box-shadow: 0 0 32px rgba(0,161,224,0.28);
+    }
+    .pc-name { font-family: var(--ff-display); font-size: 0.95rem; font-weight: 700; color: var(--fg); }
+    .pc-role { font-size: 0.72rem; color: var(--accent); font-weight: 600; margin: 0.2rem 0 1rem; }
+    .pc-badge {
+      background: var(--accent-glow); border: 1px solid var(--accent-bdr);
+      border-radius: 7px; padding: 0.5rem 0.6rem;
+      font-size: 0.7rem; color: var(--fg-muted); text-align: left;
+      display: flex; align-items: center; gap: 0.4rem;
+      margin-bottom: 0.5rem;
+    }
+    .pc-badge i { color: var(--accent); flex-shrink: 0; }
+    .pc-status {
+      display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+      font-size: 0.7rem; color: var(--fg-muted); margin-top: 0.75rem;
+    }
+    .dot-green {
+      width: 7px; height: 7px; background: #22C55E; border-radius: 50%;
+      animation: pulse-g 2s infinite;
+    }
+    @keyframes pulse-g { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
 
-.about-mf .about-img {
-  margin-bottom: 2rem;
-}
+    /* ===== SECTION SHELL ===== */
+    .sf-sec { padding: 5.5rem 0; }
+    .sf-sec-alt { background: var(--bg-2); }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; }
+    .sec-eye {
+      display: inline-block; color: var(--accent);
+      font-size: 0.775rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.4rem;
+    }
+    .sec-title {
+      font-family: var(--ff-display);
+      font-size: clamp(1.75rem, 3.5vw, 2.6rem);
+      font-weight: 800; color: var(--fg); text-wrap: balance;
+      line-height: 1.1; margin-bottom: 0.9rem;
+    }
+    .sec-sub {
+      color: var(--fg-muted); font-size: 1rem; line-height: 1.72;
+      max-width: 600px;
+    }
+    .sec-head { margin-bottom: 2.8rem; }
+    .divider { width: 44px; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); border-radius: 2px; margin-bottom: 1.2rem; }
 
-.about-mf .about-img img {
-  margin-left: 10px;
-}
+    /* ===== ABOUT ===== */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+    }
+    .about-bio { color: var(--fg-muted); font-size: 0.975rem; line-height: 1.8; }
+    .about-bio p { margin-bottom: 1rem; }
+    .about-bio p:last-child { margin-bottom: 0; }
+    .hl { color: var(--fg); font-weight: 600; }
+    .hl-a { color: var(--accent); font-weight: 600; }
 
+    .info-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.75rem;
+    }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.5rem; }
+    .info-cell {
+      padding: 0.7rem 0.85rem;
+      background: rgba(0,161,224,0.045); border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+    }
+    .info-cell .lbl { font-size: 0.69rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-weight: 700; margin-bottom: 0.2rem; }
+    .info-cell .val { font-size: 0.85rem; color: var(--fg); font-weight: 600; }
+    .skill-cloud-title { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--fg-subtle); font-weight: 700; margin-bottom: 0.65rem; }
+    .pill {
+      display: inline-flex; align-items: center;
+      background: rgba(0,161,224,0.07); border: 1px solid rgba(0,161,224,0.18);
+      color: var(--fg-muted); font-size: 0.775rem; font-weight: 500;
+      padding: 0.28rem 0.65rem; border-radius: 100px; margin: 0.18rem;
+      transition: all 0.2s;
+    }
+    .pill:hover { background: rgba(0,161,224,0.14); border-color: var(--accent); color: var(--accent); }
 
-.skill-mf .progress {
-  /* background-color: #cde1f8; */
-  margin: .5rem 0 1.2rem 0;
-  border-radius: 0;
-  height: .7rem;
-}
+    /* ===== SKILLS ===== */
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.25rem;
+    }
+    .skill-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.4rem;
+      transition: border-color 0.22s;
+    }
+    .skill-box:hover { border-color: var(--accent-bdr); }
+    .skill-box-head { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.9rem; }
+    .sk-icon {
+      width: 34px; height: 34px; border-radius: var(--radius-sm);
+      background: var(--accent-glow); border: 1px solid var(--accent-bdr);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent); font-size: 0.95rem; flex-shrink: 0;
+    }
+    .sk-name { font-family: var(--ff-display); font-size: 0.9rem; font-weight: 700; color: var(--fg); }
+    .sk-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .sk-tag {
+      background: rgba(255,255,255,0.035); border: 1px solid var(--border);
+      color: var(--fg-muted); font-size: 0.75rem; font-weight: 500;
+      padding: 0.22rem 0.55rem; border-radius: 5px; transition: all 0.18s;
+    }
+    .sk-tag:hover, .sk-tag.hot {
+      background: var(--accent-glow); border-color: var(--accent-bdr); color: var(--accent);
+    }
 
-.skill-mf .progress .progress-bar {
-  height: .7rem;
-  background-color: #ffbd39;
-}
+    /* ===== EXPERIENCE ===== */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 7px; top: 10px; bottom: 0;
+      width: 2px; background: linear-gradient(to bottom, var(--accent), transparent);
+    }
+    .tl-item { position: relative; margin-bottom: 2.2rem; }
+    .tl-item:last-child { margin-bottom: 0; }
+    .tl-dot {
+      position: absolute; left: -2rem; top: 8px;
+      width: 15px; height: 15px; border-radius: 50%;
+      background: var(--accent); border: 3px solid var(--bg);
+      box-shadow: 0 0 0 3px var(--accent-bdr);
+    }
+    .tl-dot.dim { background: var(--fg-subtle); box-shadow: 0 0 0 3px rgba(75,106,133,0.3); }
+    .tl-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+      transition: border-color 0.22s;
+    }
+    .tl-card:hover { border-color: var(--accent-bdr); }
+    .tl-period { font-size: 0.75rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.4rem; }
+    .tl-role { font-family: var(--ff-display); font-size: 1.1rem; font-weight: 700; color: var(--fg); margin-bottom: 0.2rem; }
+    .tl-company { font-size: 0.85rem; color: var(--fg-muted); font-weight: 500; margin-bottom: 0.9rem; }
+    .tl-bullets { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.45rem; }
+    .tl-bullets li { font-size: 0.875rem; color: var(--fg-muted); padding-left: 1.2rem; position: relative; line-height: 1.6; }
+    .tl-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.78rem; top: 1px; }
+    .tl-tech { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.9rem; }
+    .tl-tag { background: var(--accent-glow); border: 1px solid var(--accent-bdr); color: var(--accent); font-size: 0.7rem; font-weight: 700; padding: 0.18rem 0.5rem; border-radius: 4px; }
 
+    /* ===== STATS ===== */
+    .stats-band {
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 2.75rem 0; background: var(--bg-2);
+    }
+    .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .stat { text-align: center; }
+    .stat-n {
+      font-family: var(--ff-display); font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; color: var(--accent); line-height: 1; display: block;
+      font-variant-numeric: tabular-nums;
+    }
+    .stat-l { font-size: 0.775rem; color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; margin-top: 0.4rem; }
 
-/* Animation styles */
-#typing-animation {
-  position: relative;
-  font-size: 30px;
-  font-weight: bold;
-  color: rgb(255, 255, 255);
-  overflow: hidden;
-  white-space: nowrap;
-  animation: typing 3s steps(20, end) infinite;
-}
+    /* ===== PROJECTS ===== */
+    .proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.3rem; }
+    .proj-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+      display: flex; flex-direction: column; position: relative; overflow: hidden;
+      transition: all 0.28s;
+    }
+    .proj-card::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      opacity: 0; transition: opacity 0.28s;
+    }
+    .proj-card:hover {
+      border-color: var(--accent-bdr); transform: translateY(-4px);
+      box-shadow: 0 20px 44px rgba(0,0,0,0.35);
+    }
+    .proj-card:hover::after { opacity: 1; }
+    .proj-card.feat { border-color: var(--accent-bdr); background: linear-gradient(145deg, rgba(13,26,45,0.95), rgba(0,112,210,0.055)); }
+    .proj-card.feat::after { opacity: 1; }
+    .proj-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.9rem; }
+    .proj-icon {
+      width: 42px; height: 42px; border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center; font-size: 1.25rem;
+    }
+    .pi-sf { background: linear-gradient(135deg, #00A1E0, #0176D3); }
+    .pi-wa { background: linear-gradient(135deg, #25D366, #128C7E); }
+    .pi-bi { background: linear-gradient(135deg, #F59E0B, #D97706); }
+    .proj-links { display: flex; gap: 0.4rem; }
+    .proj-link {
+      width: 30px; height: 30px; border-radius: var(--radius-sm);
+      background: rgba(255,255,255,0.045); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--fg-muted); font-size: 0.8rem; text-decoration: none;
+      transition: all 0.18s;
+    }
+    .proj-link:hover { background: var(--accent-glow); border-color: var(--accent-bdr); color: var(--accent); }
+    .proj-badge {
+      font-size: 0.69rem; font-weight: 700; padding: 0.18rem 0.55rem;
+      border-radius: 100px; text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .pb-sf { background: rgba(0,161,224,0.14); color: var(--accent); border: 1px solid var(--accent-bdr); }
+    .pb-da { background: rgba(245,158,11,0.14); color: #F59E0B; border: 1px solid rgba(245,158,11,0.3); }
+    .proj-title { font-family: var(--ff-display); font-size: 1.025rem; font-weight: 700; color: var(--fg); margin-bottom: 0.45rem; line-height: 1.3; }
+    .proj-desc { font-size: 0.865rem; color: var(--fg-muted); line-height: 1.65; flex: 1; margin-bottom: 0.9rem; }
+    .proj-stack { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .st { background: rgba(255,255,255,0.038); border: 1px solid var(--border); color: var(--fg-subtle); font-size: 0.7rem; font-weight: 500; padding: 0.18rem 0.48rem; border-radius: 4px; }
+    .sub-label { font-size: 0.75rem; color: var(--fg-subtle); text-transform: uppercase; letter-spacing: 0.09em; font-weight: 700; margin-bottom: 0.9rem; }
 
-#typing-animation:before {
-  content: "";
-  /* position: absolute; */
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background-color: #ccc;
-  animation: typing-cursor 0.5s ease-in-out infinite;
-}
+    /* ===== CERTS ===== */
+    .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.1rem; }
+    .cert-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.4rem; display: flex; align-items: flex-start; gap: 1rem; transition: border-color 0.22s;
+    }
+    .cert-card:hover { border-color: var(--accent-bdr); }
+    .cert-ico {
+      width: 44px; height: 44px; flex-shrink: 0; border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; color: #fff;
+    }
+    .cert-ico.gold { background: linear-gradient(135deg, #F59E0B, #D97706); }
+    .cert-t { font-family: var(--ff-display); font-size: 0.925rem; font-weight: 700; color: var(--fg); margin-bottom: 0.2rem; line-height: 1.3; }
+    .cert-by { font-size: 0.775rem; color: var(--accent); font-weight: 600; }
+    .cert-dt { font-size: 0.72rem; color: var(--fg-subtle); margin-top: 0.2rem; }
 
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
+    /* ===== CONTACT ===== */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .contact-list { display: flex; flex-direction: column; gap: 0.85rem; }
+    .contact-row {
+      display: flex; align-items: center; gap: 1rem; padding: 1rem 1.1rem;
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      transition: border-color 0.22s;
+    }
+    .contact-row:hover { border-color: var(--accent-bdr); }
+    .cr-icon {
+      width: 38px; height: 38px; flex-shrink: 0; border-radius: var(--radius-sm);
+      background: var(--accent-glow); border: 1px solid var(--accent-bdr);
+      display: flex; align-items: center; justify-content: center; color: var(--accent);
+    }
+    .cr-lbl { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--fg-subtle); font-weight: 700; margin-bottom: 0.15rem; }
+    .cr-val { font-size: 0.9rem; color: var(--fg); font-weight: 500; }
+    .cta-box {
+      background: linear-gradient(135deg, rgba(0,161,224,0.09), rgba(1,118,211,0.04));
+      border: 1px solid var(--accent-bdr); border-radius: var(--radius); padding: 2rem;
+    }
+    .cta-title { font-family: var(--ff-display); font-size: 1.45rem; font-weight: 700; color: var(--fg); margin-bottom: 0.65rem; text-wrap: balance; }
+    .cta-desc { color: var(--fg-muted); font-size: 0.9rem; line-height: 1.72; margin-bottom: 1.4rem; }
+    .social-row { display: flex; gap: 0.65rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+    .soc-link {
+      display: flex; align-items: center; gap: 0.45rem; padding: 0.55rem 0.95rem;
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+      color: var(--fg-muted); text-decoration: none; font-size: 0.85rem; font-weight: 500;
+      transition: all 0.2s;
+    }
+    .soc-link:hover { border-color: var(--accent-bdr); color: var(--accent); background: var(--accent-glow); }
 
-@keyframes typing-cursor {
-  from {
-    width: 5px;
-  }
-  to {
-    width: 0;
-  }
-}
+    /* ===== FOOTER ===== */
+    .sf-footer { padding: 1.75rem 0; border-top: 1px solid var(--border); text-align: center; }
+    .sf-footer p { color: var(--fg-subtle); font-size: 0.8rem; }
+    .sf-footer a { color: var(--accent); text-decoration: none; }
 
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-visual { display: none; }
+      .hero-actions, .hero-tags { justify-content: center; }
+      .hero-eyebrow { margin-left: auto; margin-right: auto; }
+      .hero-desc { margin-left: auto; margin-right: auto; }
+    }
+    @media (max-width: 768px) {
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .info-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: rgba(7,16,31,0.98); border-bottom: 1px solid var(--border);
+        padding: 1rem 1.5rem; gap: 0.2rem;
+      }
+      .nav-links.open .nav-cta { margin-left: 0; align-self: flex-start; }
+    }
+    @media (max-width: 500px) {
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .hero-actions { flex-direction: column; align-items: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
 
-/* project image zoom effect */
+<!-- ══════════ NAVBAR ══════════ -->
+<nav class="sf-nav" id="sf-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#home">
+      <i class="fas fa-cloud brand-cloud"></i> Amit Soni
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="https://drive.google.com/file/d/1WCB7wudP1NA2lLQOnNzKIyjAghQo2ytf/view?usp=drivesdk" class="nav-cta" target="_blank">Resume ↗</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
 
-.zoom-effect {
-  overflow: hidden;
-  transition: transform 0.3s ease-out;
-}
+<!-- ══════════ HERO ══════════ -->
+<section class="hero" id="home">
+  <div class="hero-bg-radial"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow"><i class="fas fa-cloud"></i> Salesforce Developer</div>
+      <h1 class="hero-name">
+        <span class="hi">Hi, I'm </span><span class="name">Amit Soni</span>
+      </h1>
+      <div class="hero-role">
+        <span id="typed"></span><span class="cursor"></span>
+      </div>
+      <p class="hero-desc">
+        Salesforce Developer specializing in <strong>Apex, LWC &amp; API integrations</strong>.
+        I build scalable CRM solutions across <strong>Sales Cloud, Health Cloud &amp; Experience Cloud</strong> —
+        turning complex business requirements into clean, maintainable Salesforce implementations.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary"><i class="fas fa-cloud"></i> View Projects</a>
+        <a href="https://www.linkedin.com/in/amit-soni-893885260/" class="btn-outline" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/Amit-Soni1325" class="btn-outline" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+      <div class="hero-tags">
+        <span class="hero-tag"><i class="fas fa-bolt"></i> Apex &amp; LWC</span>
+        <span class="hero-tag"><i class="fas fa-cloud"></i> Sales &amp; Health Cloud</span>
+        <span class="hero-tag"><i class="fas fa-plug"></i> REST API &amp; JWT</span>
+        <span class="hero-tag"><i class="fab fa-aws"></i> AWS Lambda</span>
+        <span class="hero-tag"><i class="fas fa-share-alt"></i> Platform Events</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="profile-card">
+        <div class="avatar">AS</div>
+        <div class="pc-name">Amit Soni</div>
+        <div class="pc-role">Salesforce Developer · Cloudy Coders</div>
+        <div class="pc-badge"><i class="fas fa-award"></i> Salesforce Programming Architect</div>
+        <div class="pc-badge"><i class="fas fa-cloud"></i> Sales · Health · Experience Cloud</div>
+        <div class="pc-badge"><i class="fas fa-graduation-cap"></i> B.Tech AI &amp; DS · CGPA 8.5</div>
+        <div class="pc-status"><span class="dot-green"></span> Open to Opportunities</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-.zoom-effect:hover {
-  transform: scale(1.1);
-}
-
-
-</style>
-
-
-  </head>
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-	  
-	  
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Amit Soni</a>
-	      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
-
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav nav ml-auto">
-	          <li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
-	          <li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
-	          <li class="nav-item"><a href="#resume-section" class="nav-link"><span>Resume</span></a></li>
-	          <li class="nav-item"><a href="#project-section" class="nav-link"><span>Projects</span></a></li>
-	          <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
-	  <section id="home-section" class="hero">
-		  <div class="home-slider  owl-carousel">
-	       <div class="slider-item ">
-	      	<div class="overlay"></div>
-	         <div class="container">
-	          <div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
-	          	<div class="one-third js-fullheight order-last img" style="background-image:url(images/bg_11.png);">
-	          	 <div class="overlay"></div>
-	          	</div>
-		          <div class="one-forth d-flex  align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-		          	<div class="text">
-		          		<span class="subheading">Hello!</span>
-			            <h1 class="mb-4 mt-3">I'm <span>Amit Soni</span></h1>
-
-						<!-- Element to contain animated typing -->
-						<span id="typing-animation"></span>
-
-						<script>
-
-						// Initialize the typing animation
-						const typingAnimationElement = document.getElementById('typing-animation');
-
-						// Create an array of typing text
-						const typingTexts = [
-						'Data Analyst  ',
-						'Problem Solver  ',
-						'Insight-Driven Thinker   ',
-						];
-
-						// Create a function to display the typing animation for a given text
-						function playTypingAnimation(text) {
-						// Loop through each character and add it to the element
-						for (let i = 0; i < text.length; i++) {
-							setTimeout(() => {
-							typingAnimationElement.textContent += text[i];
-							}, i * 200); // Increase the delay to slow down the typing animation
-						}
-
-						// Once the animation is complete, reset the text and start over
-						setTimeout(() => {
-							typingAnimationElement.textContent = '';
-							playTypingAnimation(typingTexts[(typingTexts.indexOf(text) + 1) % typingTexts.length]);
-						}, text.length * 200);
-						}
-
-						// Start the typing animation loop
-						playTypingAnimation(typingTexts[0]);
-
-						</script>
-
-						<br>
-						<br>
-			            <h2>-Data Analyst</h2>
-						<!-- <h2 class="d-flex" style="margin-bottom: 0">With over 5 years of experience</h2> -->
-						<!-- <br> -->
-			            <p><a href="https://www.linkedin.com/in/amit-soni-893885260/" class="btn btn-primary py-3 px-4">LinkedIn</a> 
-							<a href="https://github.com/Amit-Soni1325" class="btn btn-white btn-outline-white py-3 px-4">My works</a></p>
-		            </div>
-		          </div>
-	        	</div>
-	        </div>
-	      </div>
-		</div>
-    </section>
-
-
-
-    <section class="ftco-about img ftco-section ftco-no-pb" id="about-section">
-    	<div class="container">
-			<div class="row">
-				<div class="row d-flex align-items-stretch">
-				<!-- <div class="row d-flex"> -->
-					<div class="col-md-6 col-lg-5 d-flex">
-						<div class="img-about img d-flex align-items-stretch">
-							<div class="overlay">
-								<div class="row">
-									<div class="col-sm-6 col-md-5">
-									  <div class="about-img">
-										<img src="images/bg_12.png" class="img-fluid rounded b-shadow-a" alt="">
-									  </div>
-									</div>
-									<!-- Details next to profile image -->
-									<div class="col-sm-6 col-md-7">
-									  <div class="about-info">
-										<p><span class="title-s">Name: </span> <span>Amit Soni</span></p>
-										<p><span class="title-s">Job Role: </span> <span>Data Analyst</span></p>
-										<p><span class="title-s">Experience: </span> <span>Fresher</span></p>
-										<p><span class="title-s">Qualification: </span> <span>B.Tech(AI&DS)</span></p>
-									  </div>
-									</div>
-								  </div>
-
-								<div class="skill-mf">
-									<p class="title-s">Skills</p>
-									<span>Power BI</span> <span class="pull-right">85%</span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="95" aria-valuemin="0"
-											aria-valuemax="100"></div>
-									</div>
-									
-									<span>SQL</span> <span class="pull-right">90%</span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="85" aria-valuemin="0"
-											aria-valuemax="100"></div>
-									</div>
-									
-									<span>Advance Excel</span> <span class="pull-right">95%</span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="90" aria-valuemin="0"
-											aria-valuemax="100"></div>
-									</div>
-									
-									<span>Statistical Analysis</span> <span class="pull-right">85%</span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0"
-											aria-valuemax="100"></div>
-									</div>
-									
-									<span>Python</span> <span class="pull-right">80%</span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0"
-											aria-valuemax="100"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-md-6 col-lg-7 pl-lg-5 pb-5">
-						<div class="row justify-content-start pb-3">
-							<div class="col-md-12 heading-section ftco-animate">
-								
-								<h1 class="big">About</h1>
-								<h2 class="mb-4">About Me</h2>
-								<div class="underline"></div>
-								<br>
-								<p>Hi, I’m Amit Soni, a Data Analyst who turns raw data into actionable, decision-ready insights using Power BI, SQL, Python, and Advanced Excel. I build clean, interactive dashboards and deliver analyses that help businesses make smarter decisions.
-I am a problem solver who focuses on understanding business challenges first and then applying the right analytical approach, rather than relying blindly on tools or technology.</p>
-								<ul class="about-info mt-4 px-md-0 px-2">
-									<li class="d-flex"><span>Profile:</span> <span>Data Science &amp; Analytics</span></li>
-									<!-- <li class="d-flex"><span>Domain:</span> <span>Retail, Ecommerce, BFSI &amp; Digital Marketing</span></li> -->
-									<li class="d-flex"><span>Education:</span> <span>Bachelor of Technology</span></li>
-									<li class="d-flex"><span>Language:</span> <span>English, Hindi</span></li>
-									<li class="d-flex"><span>Data Analysis:</span> <span>Data Cleaning, Data Wrangling, EDA, Data Modeling</span></li>
-									<li class="d-flex"><span>BI & Visualization:</span> <span> Power BI (DAX, Power Query, Power Pivot), Dashboard Development, KPI Reporting </span></li>
-									<li class="d-flex"><span>Databases:</span> <span>SQL, MySQL, SQL Server</span></li>
-									<li class="d-flex"><span>Excel:</span> <span>Advanced Excel, Pivot Tables, Power Query</span></li>
-									<li class="d-flex"><span>Tool:</span> <span>Python (Pandas, NumPy), Power BI Service, ETL </span></li>
-									<li class="d-flex"><span>Interest:</span> <span>Research-based Problem Solving, Startups, Volleyball</span></li>
-									
-								</ul>
-							</div>
-						</div>
-
-
-						<!-- <div class="counter-wrap ftco-animate d-flex mt-md-3">
-							<div class="text">
-								<!-- <p class="mb-4">
-									<span class="number" data-number="30">0</span> <span>+</span>
-									<span>&nbsp; Projects completed</span>
-								</p> -->
-								<!-- <p><a href="https://www.linkedin.com/in/rishabhnmishra/" class="btn btn-primary py-3 px-3">LinkedIn</a></p> -->
-							<!-- </div>
-						</div> --> 
-					</div>
-				</div>
-			</div>
-		</div>
-    </section>
-
-
-
-	
-    <section class="ftco-section ftco-no-pb" id="resume-section">
-    	<div class="container">
-    		<div class="row justify-content-center pb-5">
-          <div class="col-md-10 heading-section text-center ftco-animate">
-          	<h1 class="big big-2">Resume</h1>
-            <h2 class="mb-4">Resume</h2>
-			<div class="underline"></div>
-			<br>
-            <p>Kindly take a moment to review my resume to learn more about my background and skills.</p>
-          </div>
-		  	<div class="row justify-content-center mt-5">
-    			<div class="col-md-6 text-center ftco-animate">
-					<p><a href="https://drive.google.com/file/d/1WCB7wudP1NA2lLQOnNzKIyjAghQo2ytf/view?usp=drivesdk" class="btn btn-primary py-3 px-4">Download CV</a> 
-    				<!-- <p><a href="https://drive.google.com/file/d/1WCB7wudP1NA2lLQOnNzKIyjAghQo2ytf/view?usp=drivesdk" class="btn btn-primary py-4 px-5">Download CV</a></p> -->
-					<!-- <p><a href="https://www.linkedin.com/in/amit-soni-893885260/" class="btn btn-primary py-3 px-4">LinkedIn</a>  -->
-					
-    			</div>
-    		</div>
-    	</div>
-    </section>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+<!-- ══════════ ABOUT ══════════ -->
+<section class="sf-sec" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="sec-head" data-aos="fade-up">
+          <span class="sec-eye">About Me</span>
+          <div class="divider"></div>
+          <h2 class="sec-title">Building the Future of CRM</h2>
         </div>
-
-		<div class="row">
-			<h1 class="big-4">Intership Experience</h1>
-			<div class="underline"></div>
-		</div>
-		<br>
-	    <br>
-	    <br>
-
-
-	
-		<div class="row">
-				<div class="col-md-6">
-					<div class="resume-wrap ftco-animate">
-						<span class="date">Mar 2025 - May 2025</span>
-						<h2>Data Analyst Intern</h2>
-						<span class="position">Cognifyz Technologies, Nagpur</span>
-						<p class="mt-4">Tool: Excel, Python, Pandas, SQL 
-							<ul>
-								<li>Processed and analyzed 10,000+ restaurant datasets using Pandas and Python to identify cuisine preferences, pricing patterns, and city-level trends, increasing data-driven insights by 30% .</li>
-								<li>Performed Exploratory Data Analysis (EDA) and correlation analysis using Python and SQL on ratings, votes, and service features to identify key customer preference drivers, improving insight accuracy by 25%</li>
-								<!-- <li>Designed and executed A/B tests, performed rigorous statistical analysis. Led to 20% MoM increase in the conversion rate.</li> -->
-							</ul>
-						</p>
-					</div>
-
-				</div>
-
-				<!-- <div class="col-md-6">
-					<div class="resume-wrap ftco-animate">
-						<span class="date">2018-2021</span>
-						<h2>Senior Data Analyst</h2>
-						<span class="position">iQuanti</span>
-						<p class="mt-4">iQuanti is a data-driven digital marketing analytics and solutions company, helps top 100 global brands. 
-							<ul>
-								<li>Performed in-depth market research and analysis to create online pages. Resulted in ~100% website growth and 30% increase in conversion rate YoY.</li>
-								<li>Delivered multiple training and mentorship sessions on analytical tools like SQL, MS Excel, Power BI, Tableau and Python.</li>
-								<li>Performed migration and enhancements for merchandising dashboard, involved data integration and its feature improvement.</li>
-							</ul>
-						</p>
-					</div>
-
-				</div> -->
-			</div>
-
-		<br>
-		<br>
-		<br>
-	    <br>
-	<br>
-
-
-
-		<div class="row">
-			<h1 class="big-4">Education</h1>
-			<div class="underline"></div>
-		</div>
-		<br>
-		
-			<div class="row">
-    			<div class="col-md-6">
-    				<div class="resume-wrap ftco-animate">
-    					<span class="date">2022-2026</span>
-    					<h2>Arya College of Engineering & I.T., Jaipur(Raj.)</h2>
-    					<span class="position">B.Tech in Artificial Intelligence and Data Science</span>
-						<!-- <span class="position">Arya</span> -->
-						
-    					<p class="mt-4">CGPA: 8.5</p>
-    				</div>
-    			</div>
-
-    			<div class="col-md-6">
-    				<div class="resume-wrap ftco-animate">
-    					<span class="date">2021-2022</span>
-    					<h2>Govt. Sr. Sec. School Rajendra Marg Bhilwara</h2>
-    					<span class="position">RBSE</span>
-    					<p class="mt-4">Grade: First class distinction.</p>
-    				</div>
-				</div>
-    		</div>
-
-    		<div class="row justify-content-center mt-5">
-    			<div class="col-md-6 text-center ftco-animate">
-    				<p><a href="https://drive.google.com/file/d/1WCB7wudP1NA2lLQOnNzKIyjAghQo2ytf/view?usp=drivesdk" class="btn btn-primary py-4 px-5">Download CV</a></p>
-    			</div>
-    		</div>
-    	</div>
-    </section>
-
-   
-
-    <section class="ftco-section" id="project-section">
-      <div class="container">
-        <div class="row justify-content-center mb-5 pb-5">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-				<div class="row">
-			<h1 class="big-4">Projects</h1>
-			<div class="underline"></div>
-		</div>
-            <!-- <h1 class="big big-2">Projects</h1> -->
-            <!-- <h2 class="mb-4">Projects</h2> -->
-            <p>Below are the sample Data Analytics projects on SQL, Python, Power BI.</p>
-          </div>
+        <div class="about-bio" data-aos="fade-up" data-aos-delay="80">
+          <p>I'm a <span class="hl">Salesforce Developer</span> at Cloudy Coders with 7+ months of hands-on experience building enterprise-grade Salesforce solutions. I specialize in <span class="hl-a">Apex, Lightning Web Components, and API integrations</span> — from bulkified triggers and async processing to full REST API integrations with JWT authentication.</p>
+          <p>I've shipped real-world projects involving <span class="hl">Experience Cloud supplier portals, WhatsApp Business API integrations,</span> and <span class="hl">AWS Lambda middleware</span> — building systems that handle live customer data at scale.</p>
+          <p>Familiar with <span class="hl-a">Sales Cloud</span> (Lead &amp; Opportunity Management), <span class="hl-a">Health Cloud</span> (Patient Management, Care Plans, Clinical Encounters), and <span class="hl-a">Experience Cloud</span> — including their core objects, data models, and business processes.</p>
         </div>
-        <div class="row d-flex">
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry justify-content-end">
-              <a href="https://github.com/Amit-Soni1325/Business_Insights_360-main?tab=readme-ov-file" class="block-20 zoom-effect" style="background-image: url('images/proj_3.jpg');">
-              </a>
-              <div class="text mt-3 float-right d-block">
-
-                <h3 class="heading"><a href="https://github.com/Amit-Soni1325/Business_Insights_360-main?tab=readme-ov-file">Business Insight 360 using Power BI, SQL, Advance Excel</a></h3>
-                <p>My project was about building a Power BI dashboard for AtliQ Hardware to help them take data-driven decisions.</p>
-				<h6> <a href="https://app.powerbi.com/view?r=eyJrIjoiYTY5Zjc3OTYtNTQ3OC00M2JhLTg5ODEtYzc4OWQ3NDFjNDZmIiwidCI6IjE1MWVhN2FjLTBjNTctNDdhYy05Y2IzLTQ3NzFhYmMyMGZiOSJ9">Live Dashboard link </a></h6>
-              </div>
-            </div>
+      </div>
+      <div data-aos="fade-left" data-aos-delay="120">
+        <div class="info-card">
+          <div class="info-grid">
+            <div class="info-cell"><div class="lbl">Role</div><div class="val">Salesforce Developer</div></div>
+            <div class="info-cell"><div class="lbl">Company</div><div class="val">Cloudy Coders</div></div>
+            <div class="info-cell"><div class="lbl">Experience</div><div class="val">7+ Months</div></div>
+            <div class="info-cell"><div class="lbl">Education</div><div class="val">B.Tech AI &amp; DS</div></div>
+            <div class="info-cell"><div class="lbl">Location</div><div class="val">Jaipur, India</div></div>
+            <div class="info-cell"><div class="lbl">CGPA</div><div class="val">8.5 / 10.0</div></div>
           </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry justify-content-end">
-              <a href="https://github.com/Amit-Soni1325/Cognifyz-Tech-Internship-Project/blob/main/README.md" class="block-20 zoom-effect" style="background-image: url('images/proj_4.jpg');">
-              </a>
-              <div class="text mt-3 float-right d-block">
-
-                <h3 class="heading"><a href="https://github.com/Amit-Soni1325/Cognifyz-Tech-Internship-Project/blob/main/README.md">Data Analysis using Python, EDA, Matplotlib, Statistics Project</a></h3>
-                <p>Identified key restaurant rating drivers using EDA and correlation analysis, supported by 15+ visualizations in Python.</p>
-				<h6> <a href="https://github.com/Amit-Soni1325/Cognifyz-Tech-Internship-Project/blob/main/Level%202%20Task%201%2C2%2C3%2C4.ipynb">Live link </a></h6>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry">
-              <a href="https://github.com/Amit-Soni1325/Excel_Sales_Analytics" class="block-20 zoom-effect" style="background-image: url('images/proj_5.jpg');">
-              </a>
-              <div class="text mt-3 float-right d-block">
-
-                <h3 class="heading"><a href="https://github.com/Amit-Soni1325/Excel_Sales_Analytics">Applying Sales & Finance Analytics for Business growth</a></h3>
-                <p>Leverages sales and finance analytics to deliver data-driven insights supporting strategic growth at AtliQ Hardware.</p>
-				<h6> <a href="https://github.com/Amit-Soni1325/Excel_Sales_Analytics/blob/main/Customer%20Performance%20Report.pdf">Live link </a></h6>
-              </div>
-            </div>
-          </div>
-        </div>
-	<br>
-		<!-- added justify-content-center to center align the last two projects -->
-		<!-- <div class="row d-flex justify-content-center">  
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry justify-content-end">
-				<a href="https://github.com/rishabhnmishra/sales_forecasting/tree/main" class="block-20 zoom-effect" style="background-image: url('images/proj_4.jpg');">
-				</a>
-				<div class="text mt-3 float-right d-block">
-  
-				  <h3 class="heading"><a href="https://github.com/rishabhnmishra/sales_forecasting/tree/main">Sales Forecast- Time Series Forecasting</a></h3>
-				  <p>Used multiple machine learning models to forecast sales (retail store) and performed time series analysis.</p>
-				</div>
-			  </div>
-			</div>
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry justify-content-end">
-				<a href="https://github.com/rishabhnmishra/customer_segmentation/blob/main/Customer_Segmentation-final.ipynb" class="block-20 zoom-effect" style="background-image: url('images/proj_5.jpg');">
-				</a>
-				<div class="text mt-3 float-right d-block">
-  
-				  <h3 class="heading"><a href="https://github.com/rishabhnmishra/customer_segmentation/blob/main/Customer_Segmentation-final.ipynb">Customer Segmentation using clustering model</a></h3>
-				  <p>Developed a ML model to give various recommendations of financial products &amp; services on target customer groups.</p>
-				</div>
-			  </div>
-			</div>
-		 </div>
-	  </div> -->
-    </section>
-
-	<section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter">
-      <div class="container">
-		<div class="row d-md-flex align-items-center">
-          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-            <div class="block-18">
-              <div class="text">
-                <strong class="number" data-number="10">0</strong>
-                <span> Dashboards Built</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-            <div class="block-18">
-              <div class="text">
-                <strong class="number" data-number="5">0</strong>
-                <span>Projects</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-            <div class="block-18">
-              <div class="text">
-                <strong class="number" data-number="15">0</strong>
-                <span>Certificate's</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-            <div class="block-18">
-              <div class="text">
-                <strong class="number" data-number="13">0</strong>
-                <span> Dashboards Built</span>
-              </div>
-            </div>
+          <div class="skill-cloud-title">Core Skills</div>
+          <div>
+            <span class="pill">Apex</span><span class="pill">LWC</span><span class="pill">SOQL</span>
+            <span class="pill">Triggers</span><span class="pill">Batch Apex</span><span class="pill">Queueable Apex</span>
+            <span class="pill">REST API</span><span class="pill">JWT</span><span class="pill">Platform Events</span>
+            <span class="pill">Flows</span><span class="pill">Experience Cloud</span>
+            <span class="pill">Sales Cloud</span><span class="pill">Health Cloud</span>
+            <span class="pill">AWS Lambda</span><span class="pill">DynamoDB</span>
           </div>
         </div>
       </div>
-	
-	  <div class="ftco-section ftco-hireme img margin-top" style="background-image: url(images/bg_1.jpg)">
-			<!-- <div class="container"> -->
-				<div class="row justify-content-center">
-					<div class="col-md-7 ftco-animate text-center">
-						<h2>More projects on<span> Github  </span> </h2>
-						<div class="heading"> <h4> I love to solve business problems &amp; uncover hidden data stories </h4>
-						<br>
-						<p><a href="https://github.com/Amit-Soni1325" class="btn btn-primary py-3 px-5">GitHub</a></p>
-						</div>
-					</div>
-				</div>
-			<!-- </div> -->
-		</div>
-	</section>
+    </div>
+  </div>
+</section>
 
+<!-- ══════════ SKILLS ══════════ -->
+<section class="sf-sec sf-sec-alt" id="skills">
+  <div class="container">
+    <div class="sec-head" data-aos="fade-up">
+      <span class="sec-eye">Technical Skills</span>
+      <div class="divider"></div>
+      <h2 class="sec-title">What I Work With</h2>
+      <p class="sec-sub">From Apex development to cloud integrations — a complete Salesforce toolkit.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-box" data-aos="fade-up" data-aos-delay="0">
+        <div class="skill-box-head">
+          <div class="sk-icon"><i class="fas fa-code"></i></div>
+          <div class="sk-name">Salesforce Development</div>
+        </div>
+        <div class="sk-tags">
+          <span class="sk-tag hot">Apex</span><span class="sk-tag hot">LWC</span>
+          <span class="sk-tag hot">SOQL</span><span class="sk-tag">Triggers</span>
+          <span class="sk-tag">Batch Apex</span><span class="sk-tag">Queueable Apex</span>
+          <span class="sk-tag">Scheduled Apex</span><span class="sk-tag">Future Methods</span>
+          <span class="sk-tag">Test Classes</span><span class="sk-tag">Custom Metadata</span>
+          <span class="sk-tag">Named Credentials</span><span class="sk-tag">Change Sets</span>
+        </div>
+      </div>
+      <div class="skill-box" data-aos="fade-up" data-aos-delay="70">
+        <div class="skill-box-head">
+          <div class="sk-icon"><i class="fas fa-cogs"></i></div>
+          <div class="sk-name">Salesforce Administration</div>
+        </div>
+        <div class="sk-tags">
+          <span class="sk-tag hot">Flows</span><span class="sk-tag hot">Permission Sets</span>
+          <span class="sk-tag">Validation Rules</span><span class="sk-tag">Custom Objects</span>
+          <span class="sk-tag">Data Modeling</span><span class="sk-tag">Record Types</span>
+          <span class="sk-tag">OWD</span><span class="sk-tag">Profiles</span>
+          <span class="sk-tag">FLS</span><span class="sk-tag">Sharing Rules</span>
+          <span class="sk-tag">Apex Sharing</span>
+        </div>
+      </div>
+      <div class="skill-box" data-aos="fade-up" data-aos-delay="140">
+        <div class="skill-box-head">
+          <div class="sk-icon"><i class="fas fa-cloud"></i></div>
+          <div class="sk-name">Salesforce Clouds</div>
+        </div>
+        <div class="sk-tags">
+          <span class="sk-tag hot">Sales Cloud</span><span class="sk-tag hot">Health Cloud</span>
+          <span class="sk-tag hot">Experience Cloud</span>
+          <span class="sk-tag">Lead Management</span><span class="sk-tag">Opportunity Mgmt</span>
+          <span class="sk-tag">Patient Management</span><span class="sk-tag">Provider Mgmt</span>
+          <span class="sk-tag">Care Plans</span><span class="sk-tag">Clinical Encounters</span>
+        </div>
+      </div>
+      <div class="skill-box" data-aos="fade-up" data-aos-delay="0">
+        <div class="skill-box-head">
+          <div class="sk-icon"><i class="fas fa-plug"></i></div>
+          <div class="sk-name">Integration &amp; APIs</div>
+        </div>
+        <div class="sk-tags">
+          <span class="sk-tag hot">REST API</span><span class="sk-tag hot">JWT Auth</span>
+          <span class="sk-tag hot">Webhooks</span><span class="sk-tag hot">Platform Events</span>
+          <span class="sk-tag">SOAP API</span><span class="sk-tag">JSON</span>
+          <span class="sk-tag">HTTP Callouts</span><span class="sk-tag">External Credentials</span>
+          <span class="sk-tag">Governor Limits</span>
+        </div>
+      </div>
+      <div class="skill-box" data-aos="fade-up" data-aos-delay="70">
+        <div class="skill-box-head">
+          <div class="sk-icon"><i class="fab fa-aws"></i></div>
+          <div class="sk-name">Cloud &amp; Technologies</div>
+        </div>
+        <div class="sk-tags">
+          <span class="sk-tag hot">AWS Lambda</span><span class="sk-tag hot">DynamoDB</span>
+          <span class="sk-tag">AWS Secrets Manager</span>
+          <span class="sk-tag">JavaScript</span><span class="sk-tag">HTML / CSS</span>
+          <span class="sk-tag">Python</span><span class="sk-tag">C++</span>
+          <span class="sk-tag">OOP</span><span class="sk-tag">Git</span><span class="sk-tag">Postman</span>
+        </div>
+      </div>
+      <div class="skill-box" data-aos="fade-up" data-aos-delay="140">
+        <div class="skill-box-head">
+          <div class="sk-icon"><i class="fas fa-chart-bar"></i></div>
+          <div class="sk-name">Data Analysis</div>
+        </div>
+        <div class="sk-tags">
+          <span class="sk-tag">SQL</span><span class="sk-tag">Power BI</span>
+          <span class="sk-tag">DAX</span><span class="sk-tag">Python (Pandas)</span>
+          <span class="sk-tag">NumPy</span><span class="sk-tag">Advanced Excel</span>
+          <span class="sk-tag">EDA</span><span class="sk-tag">Power Query</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-
-    <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
-      <div class="container">
-      	<div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Contact</h1>
-            <h2 class="mb-4">Contact Me</h2>
-            <p>Below are the details to reach out to me!</p>
+<!-- ══════════ EXPERIENCE ══════════ -->
+<section class="sf-sec" id="experience">
+  <div class="container">
+    <div class="sec-head" data-aos="fade-up">
+      <span class="sec-eye">Experience</span>
+      <div class="divider"></div>
+      <h2 class="sec-title">Work History</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item" data-aos="fade-up">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-period">May 2026 – Present · Full-time</div>
+          <div class="tl-role">Software Engineer Trainee – Salesforce Developer</div>
+          <div class="tl-company">Cloudy Coders · Noida, Uttar Pradesh</div>
+          <ul class="tl-bullets">
+            <li>Develop custom Salesforce solutions using Apex, LWC, SOQL, Flows, and Salesforce CRM configuration</li>
+            <li>Build bulkified Apex Triggers and Handler classes using Maps, Sets, and optimized SOQL queries</li>
+            <li>Implement Record-Triggered and Screen Flows for business process automation and validation</li>
+            <li>Develop Asynchronous Apex using Batch, Queueable, Future, and Scheduled Apex for data processing</li>
+            <li>Contribute to Experience Cloud, REST API integrations, JWT authentication, and WhatsApp Cloud API</li>
+            <li>Work with AWS Lambda, Webhooks, DynamoDB, and third-party integrations for API communication</li>
+          </ul>
+          <div class="tl-tech">
+            <span class="tl-tag">Apex</span><span class="tl-tag">LWC</span>
+            <span class="tl-tag">Experience Cloud</span><span class="tl-tag">REST API</span>
+            <span class="tl-tag">JWT</span><span class="tl-tag">AWS Lambda</span>
+            <span class="tl-tag">Platform Events</span><span class="tl-tag">Webhooks</span>
           </div>
         </div>
-
-        <div class="row d-flex contact-info mb-5">
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-          	<div class="align-self-stretch box p-4 text-center">
-          		<div class="icon d-flex align-items-center justify-content-center">
-          			<span class="icon-map-signs"></span>
-          		</div>
-          		<h3 class="mb-4">Address</h3>
-	            <p>Jaipur, India</p>
-	          </div>
+      </div>
+      <div class="tl-item" data-aos="fade-up" data-aos-delay="100">
+        <div class="tl-dot dim"></div>
+        <div class="tl-card">
+          <div class="tl-period">Mar 2025 – May 2025 · Internship</div>
+          <div class="tl-role">Data Analyst Intern</div>
+          <div class="tl-company">Cognifyz Technologies · Nagpur</div>
+          <ul class="tl-bullets">
+            <li>Processed and analyzed 10,000+ restaurant records using Pandas and Python to identify cuisine preferences, pricing patterns, and city-level trends, increasing data-driven insights by 30%</li>
+            <li>Performed EDA and correlation analysis using Python and SQL, improving insight accuracy by 25% across ratings, votes, and service feature datasets</li>
+          </ul>
+          <div class="tl-tech">
+            <span class="tl-tag">Python</span><span class="tl-tag">Pandas</span>
+            <span class="tl-tag">SQL</span><span class="tl-tag">EDA</span><span class="tl-tag">Matplotlib</span>
           </div>
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-          	<div class="align-self-stretch box p-4 text-center">
-          		<div class="icon d-flex align-items-center justify-content-center">
-          			<span class="icon-phone2"></span>
-          		</div>
-          		<h3 class="mb-4">Contact Number</h3>
-	            <p><a href="tel://7976843035">+91-7976843035</a></p>
-	          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ STATS BAND ══════════ -->
+<div class="stats-band">
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat" data-aos="fade-up">
+        <span class="stat-n">7+</span>
+        <div class="stat-l">Months SF Experience</div>
+      </div>
+      <div class="stat" data-aos="fade-up" data-aos-delay="70">
+        <span class="stat-n">5+</span>
+        <div class="stat-l">Projects Built</div>
+      </div>
+      <div class="stat" data-aos="fade-up" data-aos-delay="140">
+        <span class="stat-n">25+</span>
+        <div class="stat-l">Technical Skills</div>
+      </div>
+      <div class="stat" data-aos="fade-up" data-aos-delay="210">
+        <span class="stat-n">8.5</span>
+        <div class="stat-l">CGPA (B.Tech)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ PROJECTS ══════════ -->
+<section class="sf-sec sf-sec-alt" id="projects">
+  <div class="container">
+    <div class="sec-head" data-aos="fade-up">
+      <span class="sec-eye">Projects</span>
+      <div class="divider"></div>
+      <h2 class="sec-title">What I've Built</h2>
+      <p class="sec-sub">Salesforce enterprise integrations, Experience Cloud portals, and data analytics work.</p>
+    </div>
+
+    <!-- Salesforce Projects -->
+    <div class="sub-label" data-aos="fade-up">Salesforce Projects</div>
+    <div class="proj-grid" style="margin-bottom: 2.5rem;">
+      <div class="proj-card feat" data-aos="fade-up" data-aos-delay="0">
+        <div class="proj-head">
+          <div style="display:flex;gap:0.7rem;align-items:center;">
+            <div class="proj-icon pi-sf"><i class="fas fa-cloud" style="color:#fff"></i></div>
+            <span class="proj-badge pb-sf">Salesforce</span>
           </div>
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-          	<div class="align-self-stretch box p-4 text-center">
-          		<div class="icon d-flex align-items-center justify-content-center">
-          			<span class="icon-paper-plane"></span>
-          		</div>
-          		<h3 class="mb-4">Email Address</h3>
-	            <p><a href="mailto:amitsoni2552088@gmail.com">amitsoni2552088@gmail.com</a></p>
-	          </div>
+          <div class="proj-links">
+            <a href="https://github.com/Amit-Soni1325" class="proj-link" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
           </div>
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-          	<div class="align-self-stretch box p-4 text-center">
-          		<div class="icon d-flex align-items-center justify-content-center">
-          			<span class="icon-globe"></span>
-          		</div>
-          		<h3 class="mb-4">Download Resume</h3>
-	            <p><a href="">resumelink</a></p>
-	          </div>
+        </div>
+        <div class="proj-title">Ignite Central – Supplier Assessment Integration</div>
+        <div class="proj-desc">Enterprise Experience Cloud portal for supplier onboarding, application management, assessments, and document handling. Integrated SuRGEIQ via REST APIs for participant provisioning, assessment sync, and PDF report retrieval. Built JWT-based SSO, Queueable/Batch/Scheduled Apex, and Platform Events for secure async processing. Configured Permission Sets, Custom Permissions, and Apex Sharing for multi-tier security.</div>
+        <div class="proj-stack">
+          <span class="st">Apex</span><span class="st">LWC</span><span class="st">Experience Cloud</span>
+          <span class="st">REST API</span><span class="st">JWT / SSO</span><span class="st">Batch Apex</span>
+          <span class="st">Platform Events</span><span class="st">Permission Sets</span>
+        </div>
+      </div>
+
+      <div class="proj-card feat" data-aos="fade-up" data-aos-delay="100">
+        <div class="proj-head">
+          <div style="display:flex;gap:0.7rem;align-items:center;">
+            <div class="proj-icon pi-wa"><i class="fab fa-whatsapp" style="color:#fff"></i></div>
+            <span class="proj-badge pb-sf">Integration</span>
           </div>
+          <div class="proj-links">
+            <a href="https://github.com/Amit-Soni1325" class="proj-link" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <div class="proj-title">WhatsApp – Salesforce Integration</div>
+        <div class="proj-desc">Full-stack WhatsApp Business API integration within Salesforce. Handles inbound webhook processing, Lead/Contact matching, automated Lead creation, and conversation history directly on Salesforce records. Built on AWS Lambda middleware with DynamoDB tenant mapping and AWS Secrets Manager for secure WhatsApp Cloud API communication.</div>
+        <div class="proj-stack">
+          <span class="st">Apex</span><span class="st">LWC</span><span class="st">REST API</span>
+          <span class="st">Webhooks</span><span class="st">AWS Lambda</span>
+          <span class="st">DynamoDB</span><span class="st">WhatsApp Cloud API</span>
+          <span class="st">AWS Secrets Manager</span>
+        </div>
+      </div>
+    </div>
 
-		  <div class="container">
-			<br>
-			<br>
-			<!-- <div class="row justify-content-center">
-				<div class="col-md-7 ftco-animate text-center">
-					<h2>Have a<span> Question?  </span> <a href="https://forms.gle/uLaTShUKXraAvHJ77" class="btn btn-primary py-3 px-5">Click Here</a> </h2>
-				</div>
-			</div> -->
-				<!-- <br>
-					<ul class="ftco-footer-social list-unstyled d-flex justify-content-center align-items-center mb-0">
-					  <li class="ftco-animate normal-txt">Find me on  </li>
-					  <li class="ftco-animate"><a href="https://www.youtube.com/@RishabhMishraOfficial"><span class="icon-youtube"></span></a></li>
-					  <li class="ftco-animate"><a href="https://www.linkedin.com/in/rishabhnmishra/"><span class="icon-linkedin"></span></a></li>  
-					  <li class="ftco-animate"><a href="https://twitter.com/rishabhnmishra"><span class="icon-twitter"></span></a></li>
-					  <li class="ftco-animate"><a href="https://twitter.com/rishabhnmishra"><span class="icon-facebook"></span></a></li>
-				      <li class="ftco-animate"><a href="https://www.instagram.com/rishabhnmishra/"><span class="icon-instagram"></span></a></li>
-					</ul>
-				<br> -->
-		   </div>
-   </div>
- </section>
+    <!-- Data Analytics Projects -->
+    <div class="sub-label" data-aos="fade-up">Data Analytics Projects</div>
+    <div class="proj-grid">
+      <div class="proj-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="proj-head">
+          <div style="display:flex;gap:0.7rem;align-items:center;">
+            <div class="proj-icon pi-bi"><i class="fas fa-chart-pie" style="color:#fff"></i></div>
+            <span class="proj-badge pb-da">Power BI</span>
+          </div>
+          <div class="proj-links">
+            <a href="https://github.com/Amit-Soni1325/Business_Insights_360-main?tab=readme-ov-file" class="proj-link" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://app.powerbi.com/view?r=eyJrIjoiYTY5Zjc3OTYtNTQ3OC00M2JhLTg5ODEtYzc4OWQ3NDFjNDZmIiwidCI6IjE1MWVhN2FjLTBjNTctNDdhYy05Y2IzLTQ3NzFhYmMyMGZiOSJ9" class="proj-link" target="_blank" title="Live"><i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+        <div class="proj-title">Business Insights 360</div>
+        <div class="proj-desc">Multi-dimensional Power BI dashboard for AtliQ Hardware providing executive-level insights across finance, sales, supply chain, marketing, and customer analytics. Enabled data-driven decision-making with interactive drill-throughs and cross-page filters.</div>
+        <div class="proj-stack">
+          <span class="st">Power BI</span><span class="st">SQL</span><span class="st">DAX</span>
+          <span class="st">Advanced Excel</span><span class="st">Power Query</span>
+        </div>
+      </div>
 
+      <div class="proj-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="proj-head">
+          <div style="display:flex;gap:0.7rem;align-items:center;">
+            <div class="proj-icon pi-bi" style="background:linear-gradient(135deg,#8B5CF6,#6D28D9)"><i class="fas fa-flask" style="color:#fff"></i></div>
+            <span class="proj-badge pb-da">Python EDA</span>
+          </div>
+          <div class="proj-links">
+            <a href="https://github.com/Amit-Soni1325/Cognifyz-Tech-Internship-Project/blob/main/README.md" class="proj-link" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://github.com/Amit-Soni1325/Cognifyz-Tech-Internship-Project/blob/main/Level%202%20Task%201%2C2%2C3%2C4.ipynb" class="proj-link" target="_blank" title="Notebook"><i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+        <div class="proj-title">Restaurant Data Analysis – Cognifyz Internship</div>
+        <div class="proj-desc">Identified key restaurant rating drivers using EDA and correlation analysis on 10,000+ records. Supported findings with 15+ visualizations in Python. Increased data-driven insight accuracy by 25–30%.</div>
+        <div class="proj-stack">
+          <span class="st">Python</span><span class="st">Pandas</span><span class="st">NumPy</span>
+          <span class="st">Matplotlib</span><span class="st">SQL</span><span class="st">EDA</span>
+        </div>
+      </div>
 
- 
-	
-    <footer class="ftco-footer ftco-section">
-		<div class="container">
-		  <div class="row">
-			<div class="col-md-12 text-center">
-  
-			  <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-	Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-	<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-			</div>
-		  </div>
-		</div>
-	  </footer>
+      <div class="proj-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="proj-head">
+          <div style="display:flex;gap:0.7rem;align-items:center;">
+            <div class="proj-icon pi-bi" style="background:linear-gradient(135deg,#059669,#047857)"><i class="fas fa-table" style="color:#fff"></i></div>
+            <span class="proj-badge pb-da">Excel</span>
+          </div>
+          <div class="proj-links">
+            <a href="https://github.com/Amit-Soni1325/Excel_Sales_Analytics" class="proj-link" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://github.com/Amit-Soni1325/Excel_Sales_Analytics/blob/main/Customer%20Performance%20Report.pdf" class="proj-link" target="_blank" title="Report"><i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+        <div class="proj-title">Sales &amp; Finance Analytics – AtliQ Hardware</div>
+        <div class="proj-desc">Sales and finance analytics workbook delivering data-driven insights for strategic business growth. Includes customer performance reports, market analysis, and P&amp;L statements across markets, divisions, and time periods.</div>
+        <div class="proj-stack">
+          <span class="st">Advanced Excel</span><span class="st">Power Query</span>
+          <span class="st">Pivot Tables</span><span class="st">DAX</span><span class="st">Power Pivot</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ══════════ CERTIFICATIONS ══════════ -->
+<section class="sf-sec" id="certifications">
+  <div class="container">
+    <div class="sec-head" data-aos="fade-up">
+      <span class="sec-eye">Credentials</span>
+      <div class="divider"></div>
+      <h2 class="sec-title">Certifications &amp; Education</h2>
+    </div>
+    <div class="certs-grid">
+      <div class="cert-card" data-aos="fade-up">
+        <div class="cert-ico"><i class="fas fa-award"></i></div>
+        <div>
+          <div class="cert-t">Salesforce Programming Architect</div>
+          <div class="cert-by">TechForce Academy</div>
+          <div class="cert-dt">June 2025</div>
+        </div>
+      </div>
+      <div class="cert-card" data-aos="fade-up" data-aos-delay="80">
+        <div class="cert-ico"><i class="fas fa-cloud"></i></div>
+        <div>
+          <div class="cert-t">Fundamentals of Salesforce &amp; Internship</div>
+          <div class="cert-by">TechForce Academy</div>
+          <div class="cert-dt">September 2024</div>
+        </div>
+      </div>
+      <div class="cert-card" data-aos="fade-up" data-aos-delay="160">
+        <div class="cert-ico gold"><i class="fas fa-graduation-cap"></i></div>
+        <div>
+          <div class="cert-t">B.Tech – Artificial Intelligence &amp; Data Science</div>
+          <div class="cert-by">Arya College of Engineering &amp; IT, Jaipur</div>
+          <div class="cert-dt">2022 – 2026 · CGPA: 8.5 / 10.0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+<!-- ══════════ CONTACT ══════════ -->
+<section class="sf-sec sf-sec-alt" id="contact">
+  <div class="container">
+    <div class="sec-head" data-aos="fade-up">
+      <span class="sec-eye">Get in Touch</span>
+      <div class="divider"></div>
+      <h2 class="sec-title">Let's Connect</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-list" data-aos="fade-up">
+        <div class="contact-row">
+          <div class="cr-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div><div class="cr-lbl">Location</div><div class="cr-val">Jaipur, Rajasthan, India</div></div>
+        </div>
+        <div class="contact-row">
+          <div class="cr-icon"><i class="fas fa-phone"></i></div>
+          <div><div class="cr-lbl">Phone</div><div class="cr-val">+91 7976843035</div></div>
+        </div>
+        <div class="contact-row">
+          <div class="cr-icon"><i class="fas fa-envelope"></i></div>
+          <div><div class="cr-lbl">Email</div><div class="cr-val">amitsoni2552088@gmail.com</div></div>
+        </div>
+        <div class="contact-row">
+          <div class="cr-icon"><i class="fab fa-linkedin"></i></div>
+          <div><div class="cr-lbl">LinkedIn</div><div class="cr-val">linkedin.com/in/amit-soni-893885260</div></div>
+        </div>
+        <div class="contact-row">
+          <div class="cr-icon"><i class="fab fa-github"></i></div>
+          <div><div class="cr-lbl">GitHub</div><div class="cr-val">github.com/Amit-Soni1325</div></div>
+        </div>
+      </div>
+      <div data-aos="fade-left" data-aos-delay="120">
+        <div class="cta-box">
+          <div class="cta-title">Open to Global Opportunities</div>
+          <div class="cta-desc">Looking for Salesforce Developer roles — full-time or contract, remote or on-site. If you're building something on Salesforce and need an Apex/LWC specialist with real integration experience, I'd love to talk.</div>
+          <div class="social-row">
+            <a href="https://www.linkedin.com/in/amit-soni-893885260/" class="soc-link" target="_blank">
+              <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="https://github.com/Amit-Soni1325" class="soc-link" target="_blank">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+          <a href="https://drive.google.com/file/d/1WCB7wudP1NA2lLQOnNzKIyjAghQo2ytf/view?usp=drivesdk" class="btn-primary" target="_blank">
+            <i class="fas fa-file-alt"></i> Download Resume
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="sf-footer">
+  <div class="container">
+    <p>© <span id="yr"></span> Amit Soni · Salesforce Developer · Jaipur, India ·
+      <a href="https://www.linkedin.com/in/amit-soni-893885260/" target="_blank">LinkedIn</a> ·
+      <a href="https://github.com/Amit-Soni1325" target="_blank">GitHub</a>
+    </p>
+  </div>
+</footer>
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
-  
-  <script src="js/main.js"></script>
-    
-  </body>
+<script src="js/jquery.min.js"></script>
+<script src="js/aos.js"></script>
+<script>
+  // Year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // AOS
+  AOS.init({ duration: 580, easing: 'ease-out', once: true, offset: 55 });
+
+  // Navbar scroll effect
+  const nav = document.getElementById('sf-nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40));
+
+  // Hamburger
+  const ham = document.getElementById('hamburger');
+  const links = document.getElementById('nav-links');
+  ham.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  // Typed text
+  const texts = ['Salesforce Developer','Apex & LWC Specialist','REST API Integrations','Sales Cloud Builder','Health Cloud Expert','Experience Cloud Dev'];
+  let ti = 0, ci = 0, del = false;
+  const el = document.getElementById('typed');
+  function tick() {
+    const t = texts[ti];
+    el.textContent = del ? t.slice(0, --ci) : t.slice(0, ++ci);
+    let spd = del ? 55 : 95;
+    if (!del && ci === t.length) { spd = 2200; del = true; }
+    else if (del && ci === 0) { del = false; ti = (ti + 1) % texts.length; spd = 280; }
+    setTimeout(tick, spd);
+  }
+  setTimeout(tick, 600);
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const tgt = document.querySelector(a.getAttribute('href'));
+      if (tgt) { e.preventDefault(); window.scrollTo({ top: tgt.getBoundingClientRect().top + scrollY - 68, behavior: 'smooth' }); }
+    });
+  });
+</script>
+</body>
 </html>

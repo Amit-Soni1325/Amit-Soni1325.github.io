@@ -1,593 +1,431 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Amit Soni | Salesforce Developer</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Amit Soni – Salesforce Developer specializing in Apex, LWC, REST API integrations, Sales Cloud, Health Cloud, and Experience Cloud.">
+<title>Amit Soni | Salesforce Developer</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Amit Soni – Salesforce Developer at Cloudy Coders. Apex, LWC, REST API, Sales Cloud, Health Cloud, Experience Cloud, AWS Lambda.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/aos.css">
+<style>
+/* =========================================================
+   AMIT SONI — Salesforce Developer Portfolio
+   LIGHT THEME — Salesforce Blue + White + Gold
+   ========================================================= */
+:root{
+  --bg:#EEF5FF;
+  --bg2:#FFFFFF;
+  --surface:#FFFFFF;
+  --surface2:#F4F9FF;
+  --blue:#0176D3;
+  --blue-dark:#032D60;
+  --blue-mid:#0D52A8;
+  --blue-light:#EBF4FE;
+  --sky:#06B6D4;
+  --gold:#F59E0B;
+  --gold-light:#FEF3C7;
+  --green:#16A34A;
+  --green-light:#DCFCE7;
+  --indigo:#6366F1;
+  --fg:#032D60;
+  --fg-m:#3E5F82;
+  --fg-d:#7B9BB5;
+  --border:#C9DFF4;
+  --border-h:#97C3EC;
+  --shadow:0 2px 16px rgba(1,118,211,0.08),0 1px 4px rgba(0,0,0,0.04);
+  --shadow-h:0 8px 32px rgba(1,118,211,0.18),0 2px 8px rgba(0,0,0,0.06);
+  --shadow-xl:0 20px 60px rgba(1,118,211,0.2),0 4px 20px rgba(0,0,0,0.08);
+  --grad:linear-gradient(135deg,#0176D3 0%,#06B6D4 100%);
+  --grad-dark:linear-gradient(135deg,#032D60 0%,#0176D3 100%);
+  --grad-gold:linear-gradient(135deg,#F59E0B 0%,#FBBF24 100%);
+  --grad-indigo:linear-gradient(135deg,#6366F1 0%,#8B5CF6 100%);
+  --r:14px;--rs:8px;
+  --fd:'Space Grotesk',system-ui,sans-serif;
+  --fb:'Inter',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--bg);color:var(--fg);line-height:1.6;overflow-x:hidden}
+img{max-width:100%}
+a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:#EEF5FF}
+::-webkit-scrollbar-thumb{background:rgba(1,118,211,0.3);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--blue)}
+.gt{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="css/animate.css">
-  <link rel="stylesheet" href="css/aos.css">
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 0;background:rgba(255,255,255,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:all .3s;box-shadow:0 1px 8px rgba(1,118,211,0.06)}
+.nav.sc{padding:.7rem 0;background:rgba(255,255,255,.97);box-shadow:0 2px 20px rgba(1,118,211,0.1)}
+.nw{max-width:1140px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.nlogo{font-family:var(--fd);font-size:1.3rem;font-weight:800;display:flex;align-items:center;gap:.55rem}
+.nlogo-ic{width:34px;height:34px;border-radius:9px;background:var(--grad);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.9rem;flex-shrink:0;box-shadow:0 3px 12px rgba(1,118,211,0.35)}
+.nlogo-txt{background:var(--grad-dark);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nmenu{display:flex;gap:.15rem;list-style:none;align-items:center}
+.nmenu a{color:var(--fg-m);font-size:.875rem;font-weight:500;padding:.4rem .9rem;border-radius:var(--rs);transition:all .2s}
+.nmenu a:hover{color:var(--blue);background:var(--blue-light)}
+.nmenu .ncta{background:var(--grad);color:#fff!important;padding:.42rem 1.2rem;font-weight:700;border-radius:var(--rs);margin-left:.4rem;box-shadow:0 3px 12px rgba(1,118,211,0.3);transition:all .2s}
+.nmenu .ncta:hover{transform:translateY(-1px);box-shadow:0 5px 18px rgba(1,118,211,0.4)}
+.ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:5px}
+.ham span{display:block;width:22px;height:2px;background:var(--fg);border-radius:2px;transition:all .3s}
 
-  <style>
-    /* =====================================================
-       DESIGN TOKENS — Salesforce dark-first palette
-       Layout: sticky nav → hero → alternating sections
-    ===================================================== */
-    :root {
-      --bg:          #07101F;
-      --bg-2:        #0D1A2D;
-      --surface:     rgba(13, 26, 45, 0.85);
-      --accent:      #00A1E0;
-      --accent-2:    #0176D3;
-      --accent-glow: rgba(0, 161, 224, 0.12);
-      --accent-bdr:  rgba(0, 161, 224, 0.28);
-      --fg:          #EDF6FF;
-      --fg-muted:    #8BAAC4;
-      --fg-subtle:   #4B6A85;
-      --border:      rgba(139, 170, 196, 0.1);
-      --radius:      14px;
-      --radius-sm:   8px;
-      --ff-display:  'Space Grotesk', system-ui, sans-serif;
-      --ff-body:     'Inter', system-ui, sans-serif;
-    }
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:7rem 0 5rem;
+  background:radial-gradient(ellipse 55% 65% at 85% 50%,rgba(1,118,211,0.1) 0%,transparent 65%),
+             radial-gradient(ellipse 50% 55% at 15% 35%,rgba(6,182,212,0.07) 0%,transparent 60%),
+             radial-gradient(ellipse 40% 50% at 50% 90%,rgba(99,102,241,0.05) 0%,transparent 50%),
+             #EEF5FF}
+.hero-blobs{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.blob{position:absolute;border-radius:50% 40% 70% 30%/40% 60% 30% 70%;filter:blur(60px);opacity:.45;animation:morph 10s ease-in-out infinite}
+.blob1{width:400px;height:400px;background:rgba(1,118,211,0.1);top:-100px;right:5%;animation-delay:0s}
+.blob2{width:300px;height:300px;background:rgba(6,182,212,0.08);bottom:5%;right:30%;animation-delay:3s}
+.blob3{width:250px;height:250px;background:rgba(99,102,241,0.07);top:30%;left:5%;animation-delay:5s}
+@keyframes morph{0%,100%{border-radius:50% 40% 70% 30%/40% 60% 30% 70%}25%{border-radius:30% 60% 50% 40%/60% 30% 70% 40%}50%{border-radius:60% 30% 40% 60%/30% 70% 40% 60%}75%{border-radius:40% 60% 30% 70%/50% 40% 60% 30%}}
+.hw{max-width:1140px;margin:0 auto;padding:0 1.5rem;position:relative;z-index:2;display:grid;grid-template-columns:1fr 440px;gap:4rem;align-items:center}
+.hbadge{display:inline-flex;align-items:center;gap:.5rem;background:var(--green-light);border:1px solid rgba(22,163,74,.25);color:var(--green);font-size:.775rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:.35rem 1rem;border-radius:100px;margin-bottom:1.4rem}
+.hbadge .dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pg 2s ease-in-out infinite}
+@keyframes pg{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.hh1{font-family:var(--fd);font-size:clamp(2rem,3.2vw,3rem);font-weight:800;line-height:1.1;text-wrap:balance;margin-bottom:.5rem;color:var(--fg)}
+.hh1 span{display:block}
+.hh1 .accent{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hrole{font-family:var(--fd);font-size:1.1rem;font-weight:500;color:var(--fg-m);margin-bottom:1.4rem;min-height:2rem}
+#typed{color:var(--blue);font-weight:700}
+.cur{display:inline-block;width:2.5px;height:1em;background:var(--blue);margin-left:2px;vertical-align:text-bottom;animation:blink .85s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hdesc{color:var(--fg-m);font-size:1rem;line-height:1.78;max-width:530px;margin-bottom:2rem}
+.hdesc strong{color:var(--fg);font-weight:600}
+.hbtns{display:flex;gap:.85rem;flex-wrap:wrap;margin-bottom:2.2rem}
+.btn-primary{background:var(--grad);color:#fff;padding:.8rem 1.9rem;border-radius:var(--rs);font-weight:700;font-size:.95rem;display:inline-flex;align-items:center;gap:.45rem;box-shadow:0 4px 16px rgba(1,118,211,0.3);transition:all .25s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(1,118,211,0.4);color:#fff}
+.btn-outline{background:transparent;color:var(--blue);padding:.78rem 1.6rem;border-radius:var(--rs);font-weight:600;font-size:.95rem;display:inline-flex;align-items:center;gap:.45rem;border:1.5px solid var(--border-h);transition:all .25s}
+.btn-outline:hover{background:var(--blue-light);border-color:var(--blue);transform:translateY(-2px);color:var(--blue)}
+.hchips{display:flex;flex-wrap:wrap;gap:.5rem}
+.hchip{display:inline-flex;align-items:center;gap:.35rem;background:#fff;border:1px solid var(--border);color:var(--fg-m);font-size:.775rem;font-weight:500;padding:.3rem .8rem;border-radius:100px;box-shadow:var(--shadow)}
+.hchip i{color:var(--blue);font-size:.7rem}
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+/* CAREER CARD */
+.hv{position:relative;padding:.5rem 0}
+.cjcard{background:#fff;border-radius:20px;box-shadow:var(--shadow-xl);overflow:hidden;animation:cjf 5s ease-in-out infinite}
+@keyframes cjf{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.cjcard-top{background:var(--grad-dark);padding:1.1rem 1.4rem;display:flex;align-items:center;gap:.9rem}
+.cjcard-ico{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.cjcard-heading{font-family:var(--fd);font-size:.95rem;font-weight:700;color:#fff}
+.cjcard-sub{font-size:.72rem;color:rgba(255,255,255,.65);margin-top:.1rem}
+.cjcard-body{padding:1.2rem 1.4rem}
 
-    body {
-      font-family: var(--ff-body);
-      background: var(--bg);
-      color: var(--fg);
-      font-size: 16px;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+/* Journey timeline inside card */
+.cjtl{display:flex;flex-direction:column;gap:0;margin-bottom:1.1rem;position:relative}
+.cjtl::before{content:'';position:absolute;left:11px;top:14px;bottom:14px;width:2px;background:linear-gradient(to bottom,var(--blue),var(--sky),rgba(1,118,211,0.15))}
+.cjti{display:flex;gap:.85rem;align-items:flex-start;padding:.6rem 0}
+.cjdot{width:24px;height:24px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.65rem;border:2px solid #fff;position:relative;z-index:1}
+.cjdot.cur{background:var(--grad);box-shadow:0 0 0 3px rgba(1,118,211,0.2),0 3px 10px rgba(1,118,211,0.3)}
+.cjdot.int{background:linear-gradient(135deg,#8B5CF6,#6D28D9);box-shadow:0 0 0 3px rgba(99,102,241,0.2)}
+.cjdot.edu{background:var(--grad-gold);box-shadow:0 0 0 3px rgba(245,158,11,0.2)}
+.cjinfo{flex:1;min-width:0}
+.cjwhen{font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--fg-d);margin-bottom:.1rem}
+.cjrole{font-family:var(--fd);font-size:.85rem;font-weight:700;color:var(--fg);line-height:1.2}
+.cjco{font-size:.75rem;color:var(--fg-m);margin-top:.08rem}
+.cjtags{display:flex;gap:.3rem;flex-wrap:wrap;margin-top:.35rem}
+.cjtag{font-size:.65rem;font-weight:600;padding:.15rem .45rem;border-radius:4px;background:var(--blue-light);color:var(--blue);border:1px solid rgba(1,118,211,0.2)}
+.cjtag.g{background:var(--green-light);color:var(--green);border-color:rgba(22,163,74,0.2)}
+.cjtag.p{background:#F3F0FF;color:var(--indigo);border-color:rgba(99,102,241,0.2)}
 
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--accent-bdr); border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+/* Key highlights section in card */
+.cjhline{height:1px;background:var(--border);margin-bottom:.85rem}
+.cjhl-title{font-size:.67rem;text-transform:uppercase;letter-spacing:.09em;color:var(--fg-d);font-weight:700;margin-bottom:.55rem}
+.cjhl-items{display:flex;flex-direction:column;gap:.45rem}
+.cjhl{display:flex;align-items:flex-start;gap:.6rem;padding:.5rem .65rem;background:var(--surface2);border:1px solid var(--border);border-radius:var(--rs);transition:border-color .18s}
+.cjhl:hover{border-color:var(--border-h)}
+.cjhl-ic{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0}
+.cjhl-ic.b{background:var(--blue-light);color:var(--blue)}
+.cjhl-ic.g{background:var(--green-light);color:var(--green)}
+.cjhl-ic.o{background:var(--gold-light);color:#D97706}
+.cjhl-txt{font-size:.775rem;color:var(--fg-m);line-height:1.4;font-weight:500}
 
-    /* ===== NAVBAR ===== */
-    .sf-nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      padding: 1rem 0;
-      background: rgba(7, 16, 31, 0.8);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--border);
-      transition: all 0.3s;
-    }
-    .sf-nav.scrolled {
-      padding: 0.6rem 0;
-      background: rgba(7, 16, 31, 0.97);
-      border-bottom-color: var(--accent-bdr);
-    }
-    .nav-inner {
-      max-width: 1120px; margin: 0 auto;
-      padding: 0 1.5rem;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .nav-brand {
-      font-family: var(--ff-display); font-size: 1.25rem; font-weight: 700;
-      color: var(--fg); text-decoration: none;
-      display: flex; align-items: center; gap: 0.5rem;
-    }
-    .brand-cloud { color: var(--accent); font-size: 1rem; }
-    .nav-links { display: flex; gap: 0.2rem; list-style: none; align-items: center; }
-    .nav-links a {
-      color: var(--fg-muted); text-decoration: none;
-      font-size: 0.875rem; font-weight: 500;
-      padding: 0.4rem 0.8rem; border-radius: var(--radius-sm);
-      transition: all 0.2s;
-    }
-    .nav-links a:hover { color: var(--accent); background: var(--accent-glow); }
-    .nav-links .nav-cta {
-      background: var(--accent); color: #fff !important;
-      padding: 0.4rem 1.1rem; margin-left: 0.4rem;
-    }
-    .nav-links .nav-cta:hover { background: var(--accent-2); }
-    .hamburger {
-      display: none; flex-direction: column; gap: 5px;
-      background: none; border: none; cursor: pointer; padding: 4px;
-    }
-    .hamburger span {
-      display: block; width: 24px; height: 2px;
-      background: var(--fg); border-radius: 2px; transition: all 0.3s;
-    }
+/* SECTIONS */
+.sec{padding:5.5rem 0}
+.sec-alt{background:var(--bg2)}
+.wrap{max-width:1140px;margin:0 auto;padding:0 1.5rem}
+.eye{display:inline-block;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;margin-bottom:.35rem}
+.stitle{font-family:var(--fd);font-size:clamp(1.75rem,3.5vw,2.65rem);font-weight:800;color:var(--fg);text-wrap:balance;line-height:1.1;margin-bottom:.8rem}
+.ssub{color:var(--fg-m);font-size:.975rem;line-height:1.72;max-width:580px}
+.sh{margin-bottom:3rem}
+.dg{width:48px;height:3px;background:var(--grad);border-radius:2px;margin-bottom:1.1rem}
 
-    /* ===== HERO ===== */
-    .hero {
-      min-height: 100vh;
-      display: flex; align-items: center;
-      position: relative; overflow: hidden;
-      padding-top: 5rem; padding-bottom: 4rem;
-    }
-    .hero-bg-radial {
-      position: absolute; inset: 0; pointer-events: none;
-      background:
-        radial-gradient(ellipse 55% 55% at 72% 50%, rgba(1, 118, 211, 0.18) 0%, transparent 60%),
-        radial-gradient(ellipse 35% 50% at 15% 25%, rgba(0, 161, 224, 0.07) 0%, transparent 55%);
-    }
-    .hero-grid-lines {
-      position: absolute; inset: 0; pointer-events: none;
-      background-image:
-        linear-gradient(rgba(0,161,224,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,161,224,0.025) 1px, transparent 1px);
-      background-size: 56px 56px;
-    }
-    .hero-inner {
-      max-width: 1120px; margin: 0 auto; padding: 0 1.5rem;
-      position: relative; z-index: 2;
-      display: grid; grid-template-columns: 1fr 240px; gap: 3rem; align-items: center;
-    }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 0.45rem;
-      background: var(--accent-glow); border: 1px solid var(--accent-bdr);
-      color: var(--accent); font-size: 0.775rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.09em;
-      padding: 0.35rem 0.9rem; border-radius: 100px; margin-bottom: 1.4rem;
-    }
-    .hero-name {
-      font-family: var(--ff-display);
-      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
-      font-weight: 800; line-height: 1.1; color: var(--fg);
-      text-wrap: balance; margin-bottom: 0.4rem;
-    }
-    .hero-name .hi { color: var(--fg-muted); font-weight: 400; }
-    .hero-name .name { color: var(--accent); }
-    .hero-role {
-      font-family: var(--ff-display);
-      font-size: clamp(1rem, 2.5vw, 1.45rem);
-      font-weight: 500; color: var(--fg-muted); margin-bottom: 1.4rem;
-      min-height: 2.2rem;
-    }
-    .hero-role #typed { color: var(--accent); font-weight: 600; }
-    .cursor {
-      display: inline-block; width: 2px; height: 1.1em;
-      background: var(--accent); margin-left: 2px;
-      vertical-align: text-bottom; animation: blink 0.85s step-end infinite;
-    }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-    .hero-desc {
-      color: var(--fg-muted); font-size: 1.025rem; line-height: 1.75;
-      max-width: 530px; margin-bottom: 2rem;
-    }
-    .hero-desc strong { color: var(--fg); font-weight: 600; }
-    .hero-actions { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-bottom: 2.2rem; }
-    .btn-primary {
-      background: var(--accent); color: #fff;
-      padding: 0.75rem 1.7rem; border-radius: var(--radius-sm);
-      text-decoration: none; font-weight: 600; font-size: 0.95rem;
-      display: inline-flex; align-items: center; gap: 0.45rem;
-      border: 2px solid var(--accent); transition: all 0.22s;
-    }
-    .btn-primary:hover {
-      background: var(--accent-2); border-color: var(--accent-2);
-      transform: translateY(-2px); color: #fff; text-decoration: none;
-      box-shadow: 0 8px 28px rgba(0,161,224,0.4);
-    }
-    .btn-outline {
-      background: transparent; color: var(--fg);
-      padding: 0.75rem 1.7rem; border-radius: var(--radius-sm);
-      text-decoration: none; font-weight: 600; font-size: 0.95rem;
-      display: inline-flex; align-items: center; gap: 0.45rem;
-      border: 2px solid var(--border); transition: all 0.22s;
-    }
-    .btn-outline:hover {
-      border-color: var(--accent); color: var(--accent);
-      background: var(--accent-glow); transform: translateY(-2px);
-      text-decoration: none;
-    }
-    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.65rem; }
-    .hero-tag {
-      display: flex; align-items: center; gap: 0.35rem;
-      background: rgba(255,255,255,0.03); border: 1px solid var(--border);
-      color: var(--fg-muted); font-size: 0.785rem; font-weight: 500;
-      padding: 0.3rem 0.7rem; border-radius: 100px;
-    }
-    .hero-tag i { color: var(--accent); font-size: 0.72rem; }
+/* STATS */
+.sband{padding:2.8rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:#fff}
+.srow{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.sitem{text-align:center;padding:1.2rem 1rem;border-right:1px solid var(--border)}
+.sitem:last-child{border-right:none}
+.sn{font-family:var(--fd);font-size:clamp(2rem,4vw,2.75rem);font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;display:block}
+.sl{font-size:.775rem;color:var(--fg-d);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-top:.4rem}
 
-    /* Profile card */
-    .profile-card {
-      background: rgba(13,26,45,0.75);
-      border: 1px solid var(--accent-bdr);
-      border-radius: 20px; padding: 1.75rem 1.4rem;
-      text-align: center; backdrop-filter: blur(12px);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px var(--accent-bdr);
-    }
-    .avatar {
-      width: 90px; height: 90px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--ff-display); font-size: 2rem; font-weight: 800; color: #fff;
-      margin: 0 auto 1rem;
-      border: 3px solid rgba(0,161,224,0.45);
-      box-shadow: 0 0 32px rgba(0,161,224,0.28);
-    }
-    .pc-name { font-family: var(--ff-display); font-size: 0.95rem; font-weight: 700; color: var(--fg); }
-    .pc-role { font-size: 0.72rem; color: var(--accent); font-weight: 600; margin: 0.2rem 0 1rem; }
-    .pc-badge {
-      background: var(--accent-glow); border: 1px solid var(--accent-bdr);
-      border-radius: 7px; padding: 0.5rem 0.6rem;
-      font-size: 0.7rem; color: var(--fg-muted); text-align: left;
-      display: flex; align-items: center; gap: 0.4rem;
-      margin-bottom: 0.5rem;
-    }
-    .pc-badge i { color: var(--accent); flex-shrink: 0; }
-    .pc-status {
-      display: flex; align-items: center; justify-content: center; gap: 0.4rem;
-      font-size: 0.7rem; color: var(--fg-muted); margin-top: 0.75rem;
-    }
-    .dot-green {
-      width: 7px; height: 7px; background: #22C55E; border-radius: 50%;
-      animation: pulse-g 2s infinite;
-    }
-    @keyframes pulse-g { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+/* ABOUT */
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.bio{color:var(--fg-m);font-size:.975rem;line-height:1.82}
+.bio p{margin-bottom:1rem}
+.bio p:last-child{margin-bottom:0}
+.hl{color:var(--fg);font-weight:600}
+.hlb{color:var(--blue);font-weight:600}
+.hlg{color:#D97706;font-weight:600}
+.hlc{color:#0E7490;font-weight:600}
+.hlp{color:var(--indigo);font-weight:600}
+.acard{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:1.75rem;box-shadow:var(--shadow)}
+.arow{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.5rem}
+.ai{padding:.7rem .9rem;background:var(--blue-light);border:1px solid var(--border);border-radius:var(--rs)}
+.ai .l{font-size:.67rem;text-transform:uppercase;letter-spacing:.08em;color:var(--blue);font-weight:700;margin-bottom:.15rem}
+.ai .v{font-size:.85rem;color:var(--fg);font-weight:600}
+.cpl{font-size:.68rem;text-transform:uppercase;letter-spacing:.09em;color:var(--fg-d);font-weight:700;margin-bottom:.6rem}
+.cpill{display:inline-flex;align-items:center;background:var(--blue-light);border:1px solid rgba(1,118,211,0.2);color:var(--blue-mid);font-size:.775rem;font-weight:500;padding:.28rem .65rem;border-radius:100px;margin:.18rem;transition:all .18s;cursor:default}
+.cpill:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
 
-    /* ===== SECTION SHELL ===== */
-    .sf-sec { padding: 5.5rem 0; }
-    .sf-sec-alt { background: var(--bg-2); }
-    .container { max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; }
-    .sec-eye {
-      display: inline-block; color: var(--accent);
-      font-size: 0.775rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.4rem;
-    }
-    .sec-title {
-      font-family: var(--ff-display);
-      font-size: clamp(1.75rem, 3.5vw, 2.6rem);
-      font-weight: 800; color: var(--fg); text-wrap: balance;
-      line-height: 1.1; margin-bottom: 0.9rem;
-    }
-    .sec-sub {
-      color: var(--fg-muted); font-size: 1rem; line-height: 1.72;
-      max-width: 600px;
-    }
-    .sec-head { margin-bottom: 2.8rem; }
-    .divider { width: 44px; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); border-radius: 2px; margin-bottom: 1.2rem; }
+/* SKILLS */
+.kg{display:grid;grid-template-columns:repeat(auto-fit,minmax(295px,1fr));gap:1.2rem}
+.kcard{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;transition:all .3s;box-shadow:var(--shadow)}
+.kcard:hover{border-color:var(--border-h);box-shadow:var(--shadow-h);transform:translateY(-3px)}
+.kh{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+.ki{width:38px;height:38px;border-radius:var(--rs);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;flex-shrink:0;box-shadow:0 3px 10px rgba(0,0,0,0.12)}
+.ki.b{background:var(--grad)}
+.ki.p{background:var(--grad-indigo)}
+.ki.c{background:linear-gradient(135deg,#06B6D4,#0891B2)}
+.ki.g{background:var(--grad-gold)}
+.ki.gr{background:linear-gradient(135deg,#22C55E,#16A34A)}
+.kn{font-family:var(--fd);font-size:.9rem;font-weight:700;color:var(--fg)}
+.kt{display:flex;flex-wrap:wrap;gap:.35rem}
+.ktag{background:var(--surface2);border:1px solid var(--border);color:var(--fg-m);font-size:.74rem;font-weight:500;padding:.22rem .58rem;border-radius:5px;transition:all .18s;cursor:default}
+.ktag:hover,.ktag.h{background:var(--blue-light);border-color:rgba(1,118,211,0.3);color:var(--blue)}
+.ktag.pp{background:#F3F0FF;border-color:rgba(99,102,241,0.25);color:var(--indigo)}
+.ktag.cc{background:#ECFEFF;border-color:rgba(6,182,212,0.25);color:#0E7490}
+.ktag.gg{background:var(--green-light);border-color:rgba(22,163,74,0.25);color:var(--green)}
+.ktag.go{background:var(--gold-light);border-color:rgba(245,158,11,0.25);color:#92400E}
 
-    /* ===== ABOUT ===== */
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
-    }
-    .about-bio { color: var(--fg-muted); font-size: 0.975rem; line-height: 1.8; }
-    .about-bio p { margin-bottom: 1rem; }
-    .about-bio p:last-child { margin-bottom: 0; }
-    .hl { color: var(--fg); font-weight: 600; }
-    .hl-a { color: var(--accent); font-weight: 600; }
+/* EXPERIENCE */
+.tl{position:relative;padding-left:2rem}
+.tl::before{content:'';position:absolute;left:7px;top:12px;bottom:0;width:2px;background:linear-gradient(to bottom,var(--blue),var(--sky),rgba(1,118,211,0.1))}
+.tli{position:relative;margin-bottom:2.2rem}
+.tli:last-child{margin-bottom:0}
+.tldot{position:absolute;left:-2rem;top:9px;width:16px;height:16px;border-radius:50%;background:var(--grad);border:3px solid #fff;box-shadow:0 0 0 3px rgba(1,118,211,0.25),0 3px 12px rgba(1,118,211,0.3)}
+.tldot.dm{background:linear-gradient(135deg,#8AAAC8,#5A82A4);box-shadow:0 0 0 3px rgba(90,130,164,0.2)}
+.tlcard{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:1.6rem;box-shadow:var(--shadow);transition:all .25s}
+.tlcard:hover{border-color:var(--border-h);box-shadow:var(--shadow-h)}
+.tlwhen{font-size:.75rem;color:var(--sky);font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.35rem;display:flex;align-items:center;gap:.4rem}
+.tlr{font-family:var(--fd);font-size:1.1rem;font-weight:700;color:var(--fg);margin-bottom:.18rem}
+.tlco{font-size:.85rem;color:var(--fg-m);font-weight:500;margin-bottom:.9rem;display:flex;align-items:center;gap:.4rem}
+.tlco i{color:var(--blue);font-size:.8rem}
+.tll{list-style:none;padding:0;display:flex;flex-direction:column;gap:.42rem}
+.tll li{font-size:.875rem;color:var(--fg-m);padding-left:1.2rem;position:relative;line-height:1.65}
+.tll li::before{content:'▹';position:absolute;left:0;color:var(--blue);font-size:.78rem;top:.05em}
+.tltags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--border)}
+.tltag{background:var(--grad);color:#fff;font-size:.68rem;font-weight:700;padding:.18rem .55rem;border-radius:4px;opacity:.9}
 
-    .info-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.75rem;
-    }
-    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.5rem; }
-    .info-cell {
-      padding: 0.7rem 0.85rem;
-      background: rgba(0,161,224,0.045); border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-    }
-    .info-cell .lbl { font-size: 0.69rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-weight: 700; margin-bottom: 0.2rem; }
-    .info-cell .val { font-size: 0.85rem; color: var(--fg); font-weight: 600; }
-    .skill-cloud-title { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--fg-subtle); font-weight: 700; margin-bottom: 0.65rem; }
-    .pill {
-      display: inline-flex; align-items: center;
-      background: rgba(0,161,224,0.07); border: 1px solid rgba(0,161,224,0.18);
-      color: var(--fg-muted); font-size: 0.775rem; font-weight: 500;
-      padding: 0.28rem 0.65rem; border-radius: 100px; margin: 0.18rem;
-      transition: all 0.2s;
-    }
-    .pill:hover { background: rgba(0,161,224,0.14); border-color: var(--accent); color: var(--accent); }
+/* PROJECTS */
+.plab{font-size:.7rem;color:var(--fg-d);text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:.9rem;display:flex;align-items:center;gap:.7rem}
+.plab::after{content:'';flex:1;height:1px;background:var(--border)}
+.pgrid-feat{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-bottom:2.8rem}
+.pcard-feat{background:#fff;border:1px solid rgba(1,118,211,0.25);border-radius:var(--r);overflow:hidden;box-shadow:0 4px 24px rgba(1,118,211,0.1);transition:all .3s}
+.pcard-feat:hover{border-color:var(--blue);box-shadow:0 12px 40px rgba(1,118,211,0.18);transform:translateY(-4px)}
+.pf-banner{height:8px;background:var(--grad)}
+.pf-body{padding:1.6rem;display:flex;flex-direction:column}
+.pf-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem}
+.pf-ico{width:46px;height:46px;border-radius:var(--rs);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.pf-links{display:flex;gap:.4rem}
+.plk{width:30px;height:30px;border-radius:var(--rs);background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--fg-m);font-size:.8rem;transition:all .18s}
+.plk:hover{background:var(--blue-light);border-color:var(--border-h);color:var(--blue)}
+.pf-badge{font-size:.68rem;font-weight:700;padding:.2rem .6rem;border-radius:100px;text-transform:uppercase;letter-spacing:.06em;margin-top:.5rem}
+.pb-sf{background:var(--blue-light);color:var(--blue);border:1px solid rgba(1,118,211,0.25)}
+.pb-da{background:var(--gold-light);color:#92400E;border:1px solid rgba(245,158,11,0.3)}
+.pb-int{background:#F3F0FF;color:var(--indigo);border:1px solid rgba(99,102,241,0.25)}
+.pt{font-family:var(--fd);font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:.5rem;line-height:1.3}
+.pd{font-size:.86rem;color:var(--fg-m);line-height:1.68;flex:1;margin-bottom:.9rem}
+.pimpact{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:.85rem}
+.pimp{font-size:.72rem;font-weight:600;padding:.22rem .65rem;border-radius:100px;background:var(--green-light);color:var(--green);border:1px solid rgba(22,163,74,0.2)}
+.pimp.b{background:var(--blue-light);color:var(--blue);border-color:rgba(1,118,211,0.2)}
+.pimp.g{background:var(--gold-light);color:#92400E;border-color:rgba(245,158,11,0.2)}
+.ps{display:flex;flex-wrap:wrap;gap:.35rem}
+.stk{background:var(--surface2);border:1px solid var(--border);color:var(--fg-d);font-size:.7rem;font-weight:500;padding:.18rem .5rem;border-radius:4px}
+.pcard{background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);transition:all .3s;display:flex;flex-direction:column}
+.pcard:hover{border-color:var(--border-h);box-shadow:var(--shadow-h);transform:translateY(-4px)}
+.pgrid-da{display:grid;grid-template-columns:repeat(auto-fit,minmax(295px,1fr));gap:1.2rem}
 
-    /* ===== SKILLS ===== */
-    .skills-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.25rem;
-    }
-    .skill-box {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.4rem;
-      transition: border-color 0.22s;
-    }
-    .skill-box:hover { border-color: var(--accent-bdr); }
-    .skill-box-head { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.9rem; }
-    .sk-icon {
-      width: 34px; height: 34px; border-radius: var(--radius-sm);
-      background: var(--accent-glow); border: 1px solid var(--accent-bdr);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--accent); font-size: 0.95rem; flex-shrink: 0;
-    }
-    .sk-name { font-family: var(--ff-display); font-size: 0.9rem; font-weight: 700; color: var(--fg); }
-    .sk-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-    .sk-tag {
-      background: rgba(255,255,255,0.035); border: 1px solid var(--border);
-      color: var(--fg-muted); font-size: 0.75rem; font-weight: 500;
-      padding: 0.22rem 0.55rem; border-radius: 5px; transition: all 0.18s;
-    }
-    .sk-tag:hover, .sk-tag.hot {
-      background: var(--accent-glow); border-color: var(--accent-bdr); color: var(--accent);
-    }
+/* CERTS */
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(295px,1fr));gap:1.1rem}
+.ccard{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:1.4rem;display:flex;align-items:flex-start;gap:1rem;transition:all .25s;box-shadow:var(--shadow)}
+.ccard:hover{border-color:var(--border-h);box-shadow:var(--shadow-h)}
+.cico{width:48px;height:48px;flex-shrink:0;border-radius:var(--rs);display:flex;align-items:center;justify-content:center;font-size:1.25rem;color:#fff}
+.cico.b{background:var(--grad);box-shadow:0 3px 12px rgba(1,118,211,0.3)}
+.cico.g{background:var(--grad-gold);box-shadow:0 3px 12px rgba(245,158,11,0.3)}
+.ct{font-family:var(--fd);font-size:.925rem;font-weight:700;color:var(--fg);margin-bottom:.2rem;line-height:1.3}
+.cby{font-size:.78rem;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cdt{font-size:.72rem;color:var(--fg-d);margin-top:.2rem}
 
-    /* ===== EXPERIENCE ===== */
-    .timeline { position: relative; padding-left: 2rem; }
-    .timeline::before {
-      content: ''; position: absolute; left: 7px; top: 10px; bottom: 0;
-      width: 2px; background: linear-gradient(to bottom, var(--accent), transparent);
-    }
-    .tl-item { position: relative; margin-bottom: 2.2rem; }
-    .tl-item:last-child { margin-bottom: 0; }
-    .tl-dot {
-      position: absolute; left: -2rem; top: 8px;
-      width: 15px; height: 15px; border-radius: 50%;
-      background: var(--accent); border: 3px solid var(--bg);
-      box-shadow: 0 0 0 3px var(--accent-bdr);
-    }
-    .tl-dot.dim { background: var(--fg-subtle); box-shadow: 0 0 0 3px rgba(75,106,133,0.3); }
-    .tl-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.5rem;
-      transition: border-color 0.22s;
-    }
-    .tl-card:hover { border-color: var(--accent-bdr); }
-    .tl-period { font-size: 0.75rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.4rem; }
-    .tl-role { font-family: var(--ff-display); font-size: 1.1rem; font-weight: 700; color: var(--fg); margin-bottom: 0.2rem; }
-    .tl-company { font-size: 0.85rem; color: var(--fg-muted); font-weight: 500; margin-bottom: 0.9rem; }
-    .tl-bullets { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.45rem; }
-    .tl-bullets li { font-size: 0.875rem; color: var(--fg-muted); padding-left: 1.2rem; position: relative; line-height: 1.6; }
-    .tl-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.78rem; top: 1px; }
-    .tl-tech { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.9rem; }
-    .tl-tag { background: var(--accent-glow); border: 1px solid var(--accent-bdr); color: var(--accent); font-size: 0.7rem; font-weight: 700; padding: 0.18rem 0.5rem; border-radius: 4px; }
+/* CONTACT */
+.contg{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.clist{display:flex;flex-direction:column;gap:.75rem}
+.crow{display:flex;align-items:center;gap:.9rem;padding:.85rem 1.1rem;background:#fff;border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);transition:all .2s}
+.crow:hover{border-color:var(--border-h);box-shadow:var(--shadow-h)}
+.cico2{width:38px;height:38px;flex-shrink:0;border-radius:var(--rs);background:var(--blue-light);border:1px solid rgba(1,118,211,0.2);display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:.9rem}
+.clbl{font-size:.67rem;text-transform:uppercase;letter-spacing:.08em;color:var(--fg-d);font-weight:700;margin-bottom:.1rem}
+.cval{font-size:.88rem;color:var(--fg);font-weight:500}
+.ctabox{background:linear-gradient(135deg,#032D60 0%,#0D52A8 60%,#0176D3 100%);border-radius:var(--r);padding:2.2rem;position:relative;overflow:hidden}
+.ctabox::before{content:'';position:absolute;top:-30%;right:-10%;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,0.05);pointer-events:none}
+.ctabox::after{content:'';position:absolute;bottom:-40%;left:-5%;width:220px;height:220px;border-radius:50%;background:rgba(6,182,212,0.08);pointer-events:none}
+.ctah{font-family:var(--fd);font-size:1.5rem;font-weight:800;color:#fff;margin-bottom:.6rem;text-wrap:balance}
+.ctad{color:rgba(255,255,255,.75);font-size:.9rem;line-height:1.72;margin-bottom:1.4rem}
+.socr{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.3rem}
+.soc{display:flex;align-items:center;gap:.45rem;padding:.5rem .95rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:var(--rs);color:rgba(255,255,255,.85);font-size:.85rem;font-weight:500;transition:all .2s}
+.soc:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.4);color:#fff}
+.btn-white{background:#fff;color:var(--blue);padding:.8rem 1.9rem;border-radius:var(--rs);font-weight:700;font-size:.95rem;display:inline-flex;align-items:center;gap:.45rem;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:all .25s;position:relative;z-index:1}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.25);color:var(--blue)}
 
-    /* ===== STATS ===== */
-    .stats-band {
-      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      padding: 2.75rem 0; background: var(--bg-2);
-    }
-    .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-    .stat { text-align: center; }
-    .stat-n {
-      font-family: var(--ff-display); font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800; color: var(--accent); line-height: 1; display: block;
-      font-variant-numeric: tabular-nums;
-    }
-    .stat-l { font-size: 0.775rem; color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; margin-top: 0.4rem; }
+/* FOOTER */
+.foot{padding:1.75rem 0;border-top:1px solid var(--border);text-align:center;background:#fff}
+.foot p{color:var(--fg-d);font-size:.8rem}
+.foot a{color:var(--blue)}
 
-    /* ===== PROJECTS ===== */
-    .proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.3rem; }
-    .proj-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.5rem;
-      display: flex; flex-direction: column; position: relative; overflow: hidden;
-      transition: all 0.28s;
-    }
-    .proj-card::after {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      opacity: 0; transition: opacity 0.28s;
-    }
-    .proj-card:hover {
-      border-color: var(--accent-bdr); transform: translateY(-4px);
-      box-shadow: 0 20px 44px rgba(0,0,0,0.35);
-    }
-    .proj-card:hover::after { opacity: 1; }
-    .proj-card.feat { border-color: var(--accent-bdr); background: linear-gradient(145deg, rgba(13,26,45,0.95), rgba(0,112,210,0.055)); }
-    .proj-card.feat::after { opacity: 1; }
-    .proj-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.9rem; }
-    .proj-icon {
-      width: 42px; height: 42px; border-radius: var(--radius-sm);
-      display: flex; align-items: center; justify-content: center; font-size: 1.25rem;
-    }
-    .pi-sf { background: linear-gradient(135deg, #00A1E0, #0176D3); }
-    .pi-wa { background: linear-gradient(135deg, #25D366, #128C7E); }
-    .pi-bi { background: linear-gradient(135deg, #F59E0B, #D97706); }
-    .proj-links { display: flex; gap: 0.4rem; }
-    .proj-link {
-      width: 30px; height: 30px; border-radius: var(--radius-sm);
-      background: rgba(255,255,255,0.045); border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--fg-muted); font-size: 0.8rem; text-decoration: none;
-      transition: all 0.18s;
-    }
-    .proj-link:hover { background: var(--accent-glow); border-color: var(--accent-bdr); color: var(--accent); }
-    .proj-badge {
-      font-size: 0.69rem; font-weight: 700; padding: 0.18rem 0.55rem;
-      border-radius: 100px; text-transform: uppercase; letter-spacing: 0.06em;
-    }
-    .pb-sf { background: rgba(0,161,224,0.14); color: var(--accent); border: 1px solid var(--accent-bdr); }
-    .pb-da { background: rgba(245,158,11,0.14); color: #F59E0B; border: 1px solid rgba(245,158,11,0.3); }
-    .proj-title { font-family: var(--ff-display); font-size: 1.025rem; font-weight: 700; color: var(--fg); margin-bottom: 0.45rem; line-height: 1.3; }
-    .proj-desc { font-size: 0.865rem; color: var(--fg-muted); line-height: 1.65; flex: 1; margin-bottom: 0.9rem; }
-    .proj-stack { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-    .st { background: rgba(255,255,255,0.038); border: 1px solid var(--border); color: var(--fg-subtle); font-size: 0.7rem; font-weight: 500; padding: 0.18rem 0.48rem; border-radius: 4px; }
-    .sub-label { font-size: 0.75rem; color: var(--fg-subtle); text-transform: uppercase; letter-spacing: 0.09em; font-weight: 700; margin-bottom: 0.9rem; }
-
-    /* ===== CERTS ===== */
-    .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.1rem; }
-    .cert-card {
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 1.4rem; display: flex; align-items: flex-start; gap: 1rem; transition: border-color 0.22s;
-    }
-    .cert-card:hover { border-color: var(--accent-bdr); }
-    .cert-ico {
-      width: 44px; height: 44px; flex-shrink: 0; border-radius: var(--radius-sm);
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem; color: #fff;
-    }
-    .cert-ico.gold { background: linear-gradient(135deg, #F59E0B, #D97706); }
-    .cert-t { font-family: var(--ff-display); font-size: 0.925rem; font-weight: 700; color: var(--fg); margin-bottom: 0.2rem; line-height: 1.3; }
-    .cert-by { font-size: 0.775rem; color: var(--accent); font-weight: 600; }
-    .cert-dt { font-size: 0.72rem; color: var(--fg-subtle); margin-top: 0.2rem; }
-
-    /* ===== CONTACT ===== */
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
-    .contact-list { display: flex; flex-direction: column; gap: 0.85rem; }
-    .contact-row {
-      display: flex; align-items: center; gap: 1rem; padding: 1rem 1.1rem;
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-      transition: border-color 0.22s;
-    }
-    .contact-row:hover { border-color: var(--accent-bdr); }
-    .cr-icon {
-      width: 38px; height: 38px; flex-shrink: 0; border-radius: var(--radius-sm);
-      background: var(--accent-glow); border: 1px solid var(--accent-bdr);
-      display: flex; align-items: center; justify-content: center; color: var(--accent);
-    }
-    .cr-lbl { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--fg-subtle); font-weight: 700; margin-bottom: 0.15rem; }
-    .cr-val { font-size: 0.9rem; color: var(--fg); font-weight: 500; }
-    .cta-box {
-      background: linear-gradient(135deg, rgba(0,161,224,0.09), rgba(1,118,211,0.04));
-      border: 1px solid var(--accent-bdr); border-radius: var(--radius); padding: 2rem;
-    }
-    .cta-title { font-family: var(--ff-display); font-size: 1.45rem; font-weight: 700; color: var(--fg); margin-bottom: 0.65rem; text-wrap: balance; }
-    .cta-desc { color: var(--fg-muted); font-size: 0.9rem; line-height: 1.72; margin-bottom: 1.4rem; }
-    .social-row { display: flex; gap: 0.65rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
-    .soc-link {
-      display: flex; align-items: center; gap: 0.45rem; padding: 0.55rem 0.95rem;
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
-      color: var(--fg-muted); text-decoration: none; font-size: 0.85rem; font-weight: 500;
-      transition: all 0.2s;
-    }
-    .soc-link:hover { border-color: var(--accent-bdr); color: var(--accent); background: var(--accent-glow); }
-
-    /* ===== FOOTER ===== */
-    .sf-footer { padding: 1.75rem 0; border-top: 1px solid var(--border); text-align: center; }
-    .sf-footer p { color: var(--fg-subtle); font-size: 0.8rem; }
-    .sf-footer a { color: var(--accent); text-decoration: none; }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; text-align: center; }
-      .hero-visual { display: none; }
-      .hero-actions, .hero-tags { justify-content: center; }
-      .hero-eyebrow { margin-left: auto; margin-right: auto; }
-      .hero-desc { margin-left: auto; margin-right: auto; }
-    }
-    @media (max-width: 768px) {
-      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .stats-row { grid-template-columns: repeat(2, 1fr); }
-      .info-grid { grid-template-columns: 1fr 1fr; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .nav-links.open {
-        display: flex; flex-direction: column;
-        position: absolute; top: 100%; left: 0; right: 0;
-        background: rgba(7,16,31,0.98); border-bottom: 1px solid var(--border);
-        padding: 1rem 1.5rem; gap: 0.2rem;
-      }
-      .nav-links.open .nav-cta { margin-left: 0; align-self: flex-start; }
-    }
-    @media (max-width: 500px) {
-      .stats-row { grid-template-columns: repeat(2, 1fr); }
-      .hero-actions { flex-direction: column; align-items: center; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-    }
-  </style>
+/* RESPONSIVE */
+@media(max-width:980px){
+  .hw{grid-template-columns:1fr;text-align:center;gap:3rem}
+  .hv{display:none}
+  .hbtns,.hchips{justify-content:center}
+  .hbadge{margin:0 auto 1.4rem}
+  .hdesc{margin-left:auto;margin-right:auto}
+  .ag,.contg{grid-template-columns:1fr;gap:2rem}
+  .pgrid-feat{grid-template-columns:1fr}
+  .srow{grid-template-columns:repeat(2,1fr)}
+  .sitem{border-right:none;border-bottom:1px solid var(--border)}
+  .sitem:nth-child(2n){border-right:none}
+  .sitem:last-child{border-bottom:none}
+}
+@media(max-width:768px){
+  .nmenu{display:none}.ham{display:flex}
+  .nmenu.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);padding:1rem 1.5rem;gap:.2rem;box-shadow:var(--shadow)}
+  .nmenu.open .ncta{margin-left:0;align-self:flex-start}
+}
+@media(max-width:500px){.hbtns{flex-direction:column;align-items:center}.srow{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
 </head>
 <body>
 
-<!-- ══════════ NAVBAR ══════════ -->
-<nav class="sf-nav" id="sf-nav">
-  <div class="nav-inner">
-    <a class="nav-brand" href="#home">
-      <i class="fas fa-cloud brand-cloud"></i> Amit Soni
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nw">
+    <a class="nlogo" href="#home">
+      <div class="nlogo-ic"><i class="fas fa-cloud"></i></div>
+      <span class="nlogo-txt">Amit Soni</span>
     </a>
-    <ul class="nav-links" id="nav-links">
+    <ul class="nmenu" id="nmenu">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="https://drive.google.com/file/d/1WCB7wudP1NA2lLQOnNzKIyjAghQo2ytf/view?usp=drivesdk" class="nav-cta" target="_blank">Resume ↗</a></li>
+      <li><a href="https://drive.google.com/file/d/15DnHbiu8FSXtJiOIVL_rlRI_hnNukvWY/view" class="ncta" target="_blank" rel="noopener">Resume ↗</a></li>
     </ul>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<!-- ══════════ HERO ══════════ -->
+<!-- HERO -->
 <section class="hero" id="home">
-  <div class="hero-bg-radial"></div>
-  <div class="hero-grid-lines"></div>
-  <div class="hero-inner">
-    <div class="hero-content">
-      <div class="hero-eyebrow"><i class="fas fa-cloud"></i> Salesforce Developer</div>
-      <h1 class="hero-name">
-        <span class="hi">Hi, I'm </span><span class="name">Amit Soni</span>
+  <div class="hero-blobs">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+  </div>
+  <div class="hw">
+    <!-- LEFT -->
+    <div>
+      <div class="hbadge">
+        <span class="dot"></span>
+        Open to Opportunities · Salesforce Developer
+      </div>
+      <h1 class="hh1">
+        <span>Building Enterprise</span>
+        <span class="accent">Salesforce Solutions</span>
       </h1>
-      <div class="hero-role">
-        <span id="typed"></span><span class="cursor"></span>
+      <div class="hrole"><span id="typed"></span><span class="cur"></span></div>
+      <p class="hdesc">Hi, I'm <strong>Amit Soni</strong> — Salesforce Developer at <strong>Cloudy Coders</strong> with expertise in <strong>Apex, LWC &amp; API Integrations</strong>. I architect enterprise CRM solutions across <strong>Sales Cloud, Health Cloud &amp; Experience Cloud</strong>, with real-world delivery of JWT-based SSO, Platform Events, Batch Apex, and AWS Lambda integrations.</p>
+      <div class="hbtns">
+        <a href="#projects" class="btn-primary"><i class="fas fa-rocket"></i> View My Work</a>
+        <a href="https://www.linkedin.com/in/amit-soni-893885260/" class="btn-outline" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/Amit-Soni1325" class="btn-outline" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
       </div>
-      <p class="hero-desc">
-        Salesforce Developer specializing in <strong>Apex, LWC &amp; API integrations</strong>.
-        I build scalable CRM solutions across <strong>Sales Cloud, Health Cloud &amp; Experience Cloud</strong> —
-        turning complex business requirements into clean, maintainable Salesforce implementations.
-      </p>
-      <div class="hero-actions">
-        <a href="#projects" class="btn-primary"><i class="fas fa-cloud"></i> View Projects</a>
-        <a href="https://www.linkedin.com/in/amit-soni-893885260/" class="btn-outline" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="https://github.com/Amit-Soni1325" class="btn-outline" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-      </div>
-      <div class="hero-tags">
-        <span class="hero-tag"><i class="fas fa-bolt"></i> Apex &amp; LWC</span>
-        <span class="hero-tag"><i class="fas fa-cloud"></i> Sales &amp; Health Cloud</span>
-        <span class="hero-tag"><i class="fas fa-plug"></i> REST API &amp; JWT</span>
-        <span class="hero-tag"><i class="fab fa-aws"></i> AWS Lambda</span>
-        <span class="hero-tag"><i class="fas fa-share-alt"></i> Platform Events</span>
+      <div class="hchips">
+        <span class="hchip"><i class="fas fa-bolt"></i> Apex &amp; LWC</span>
+        <span class="hchip"><i class="fas fa-cloud"></i> Sales · Health · Experience Cloud</span>
+        <span class="hchip"><i class="fas fa-plug"></i> REST API · JWT · SSO</span>
+        <span class="hchip"><i class="fas fa-share-alt"></i> Platform Events</span>
+        <span class="hchip"><i class="fab fa-aws"></i> AWS Lambda · DynamoDB</span>
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="profile-card">
-        <div class="avatar">AS</div>
-        <div class="pc-name">Amit Soni</div>
-        <div class="pc-role">Salesforce Developer · Cloudy Coders</div>
-        <div class="pc-badge"><i class="fas fa-award"></i> Salesforce Programming Architect</div>
-        <div class="pc-badge"><i class="fas fa-cloud"></i> Sales · Health · Experience Cloud</div>
-        <div class="pc-badge"><i class="fas fa-graduation-cap"></i> B.Tech AI &amp; DS · CGPA 8.5</div>
-        <div class="pc-status"><span class="dot-green"></span> Open to Opportunities</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ ABOUT ══════════ -->
-<section class="sf-sec" id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div>
-        <div class="sec-head" data-aos="fade-up">
-          <span class="sec-eye">About Me</span>
-          <div class="divider"></div>
-          <h2 class="sec-title">Building the Future of CRM</h2>
-        </div>
-        <div class="about-bio" data-aos="fade-up" data-aos-delay="80">
-          <p>I'm a <span class="hl">Salesforce Developer</span> at Cloudy Coders with 7+ months of hands-on experience building enterprise-grade Salesforce solutions. I specialize in <span class="hl-a">Apex, Lightning Web Components, and API integrations</span> — from bulkified triggers and async processing to full REST API integrations with JWT authentication.</p>
-          <p>I've shipped real-world projects involving <span class="hl">Experience Cloud supplier portals, WhatsApp Business API integrations,</span> and <span class="hl">AWS Lambda middleware</span> — building systems that handle live customer data at scale.</p>
-          <p>Familiar with <span class="hl-a">Sales Cloud</span> (Lead &amp; Opportunity Management), <span class="hl-a">Health Cloud</span> (Patient Management, Care Plans, Clinical Encounters), and <span class="hl-a">Experience Cloud</span> — including their core objects, data models, and business processes.</p>
-        </div>
-      </div>
-      <div data-aos="fade-left" data-aos-delay="120">
-        <div class="info-card">
-          <div class="info-grid">
-            <div class="info-cell"><div class="lbl">Role</div><div class="val">Salesforce Developer</div></div>
-            <div class="info-cell"><div class="lbl">Company</div><div class="val">Cloudy Coders</div></div>
-            <div class="info-cell"><div class="lbl">Experience</div><div class="val">7+ Months</div></div>
-            <div class="info-cell"><div class="lbl">Education</div><div class="val">B.Tech AI &amp; DS</div></div>
-            <div class="info-cell"><div class="lbl">Location</div><div class="val">Jaipur, India</div></div>
-            <div class="info-cell"><div class="lbl">CGPA</div><div class="val">8.5 / 10.0</div></div>
-          </div>
-          <div class="skill-cloud-title">Core Skills</div>
+    <!-- RIGHT: Career Journey Card -->
+    <div class="hv">
+      <div class="cjcard">
+        <!-- Card header -->
+        <div class="cjcard-top">
+          <div class="cjcard-ico"><i class="fas fa-road" style="color:#fff"></i></div>
           <div>
-            <span class="pill">Apex</span><span class="pill">LWC</span><span class="pill">SOQL</span>
-            <span class="pill">Triggers</span><span class="pill">Batch Apex</span><span class="pill">Queueable Apex</span>
-            <span class="pill">REST API</span><span class="pill">JWT</span><span class="pill">Platform Events</span>
-            <span class="pill">Flows</span><span class="pill">Experience Cloud</span>
-            <span class="pill">Sales Cloud</span><span class="pill">Health Cloud</span>
-            <span class="pill">AWS Lambda</span><span class="pill">DynamoDB</span>
+            <div class="cjcard-heading">Career Journey</div>
+            <div class="cjcard-sub">From student to enterprise Salesforce developer</div>
+          </div>
+        </div>
+        <!-- Body -->
+        <div class="cjcard-body">
+          <!-- Timeline -->
+          <div class="cjtl">
+            <!-- Current -->
+            <div class="cjti">
+              <div class="cjdot cur"><i class="fas fa-cloud" style="color:#fff"></i></div>
+              <div class="cjinfo">
+                <div class="cjwhen">May 2026 – Present · Full-time</div>
+                <div class="cjrole">Salesforce Developer</div>
+                <div class="cjco"><i class="fas fa-building" style="font-size:.65rem;margin-right:.25rem;color:var(--blue)"></i>Cloudy Coders · Noida</div>
+                <div class="cjtags">
+                  <span class="cjtag">Apex</span><span class="cjtag">LWC</span>
+                  <span class="cjtag">REST API</span><span class="cjtag g">AWS Lambda</span>
+                </div>
+              </div>
+            </div>
+            <!-- Internship -->
+            <div class="cjti">
+              <div class="cjdot int"><i class="fas fa-chart-bar" style="color:#fff"></i></div>
+              <div class="cjinfo">
+                <div class="cjwhen">Mar 2025 – May 2025 · Internship</div>
+                <div class="cjrole">Data Analyst Intern</div>
+                <div class="cjco"><i class="fas fa-building" style="font-size:.65rem;margin-right:.25rem;color:var(--indigo)"></i>Cognifyz Technologies · Nagpur</div>
+                <div class="cjtags">
+                  <span class="cjtag p">Python</span><span class="cjtag p">Pandas</span><span class="cjtag p">SQL</span>
+                </div>
+              </div>
+            </div>
+            <!-- Education -->
+            <div class="cjti">
+              <div class="cjdot edu"><i class="fas fa-graduation-cap" style="color:#fff"></i></div>
+              <div class="cjinfo">
+                <div class="cjwhen">2022 – 2026</div>
+                <div class="cjrole">B.Tech – AI &amp; Data Science</div>
+                <div class="cjco"><i class="fas fa-university" style="font-size:.65rem;margin-right:.25rem;color:#D97706"></i>Arya College, Jaipur · CGPA 8.5</div>
+              </div>
+            </div>
+          </div>
+          <!-- Key highlights -->
+          <div class="cjhline"></div>
+          <div class="cjhl-title">Key Achievements</div>
+          <div class="cjhl-items">
+            <div class="cjhl">
+              <div class="cjhl-ic b"><i class="fas fa-cloud"></i></div>
+              <div class="cjhl-txt">Built Experience Cloud portal for <strong>500+ suppliers</strong> with JWT SSO</div>
+            </div>
+            <div class="cjhl">
+              <div class="cjhl-ic g"><i class="fab fa-whatsapp"></i></div>
+              <div class="cjhl-txt">Shipped WhatsApp–Salesforce integration via <strong>AWS Lambda</strong></div>
+            </div>
+            <div class="cjhl">
+              <div class="cjhl-ic o"><i class="fas fa-trophy"></i></div>
+              <div class="cjhl-txt">Working across <strong>Sales, Health &amp; Experience Cloud</strong></div>
+            </div>
           </div>
         </div>
       </div>
@@ -595,385 +433,371 @@
   </div>
 </section>
 
-<!-- ══════════ SKILLS ══════════ -->
-<section class="sf-sec sf-sec-alt" id="skills">
-  <div class="container">
-    <div class="sec-head" data-aos="fade-up">
-      <span class="sec-eye">Technical Skills</span>
-      <div class="divider"></div>
-      <h2 class="sec-title">What I Work With</h2>
-      <p class="sec-sub">From Apex development to cloud integrations — a complete Salesforce toolkit.</p>
-    </div>
-    <div class="skills-grid">
-      <div class="skill-box" data-aos="fade-up" data-aos-delay="0">
-        <div class="skill-box-head">
-          <div class="sk-icon"><i class="fas fa-code"></i></div>
-          <div class="sk-name">Salesforce Development</div>
-        </div>
-        <div class="sk-tags">
-          <span class="sk-tag hot">Apex</span><span class="sk-tag hot">LWC</span>
-          <span class="sk-tag hot">SOQL</span><span class="sk-tag">Triggers</span>
-          <span class="sk-tag">Batch Apex</span><span class="sk-tag">Queueable Apex</span>
-          <span class="sk-tag">Scheduled Apex</span><span class="sk-tag">Future Methods</span>
-          <span class="sk-tag">Test Classes</span><span class="sk-tag">Custom Metadata</span>
-          <span class="sk-tag">Named Credentials</span><span class="sk-tag">Change Sets</span>
-        </div>
-      </div>
-      <div class="skill-box" data-aos="fade-up" data-aos-delay="70">
-        <div class="skill-box-head">
-          <div class="sk-icon"><i class="fas fa-cogs"></i></div>
-          <div class="sk-name">Salesforce Administration</div>
-        </div>
-        <div class="sk-tags">
-          <span class="sk-tag hot">Flows</span><span class="sk-tag hot">Permission Sets</span>
-          <span class="sk-tag">Validation Rules</span><span class="sk-tag">Custom Objects</span>
-          <span class="sk-tag">Data Modeling</span><span class="sk-tag">Record Types</span>
-          <span class="sk-tag">OWD</span><span class="sk-tag">Profiles</span>
-          <span class="sk-tag">FLS</span><span class="sk-tag">Sharing Rules</span>
-          <span class="sk-tag">Apex Sharing</span>
-        </div>
-      </div>
-      <div class="skill-box" data-aos="fade-up" data-aos-delay="140">
-        <div class="skill-box-head">
-          <div class="sk-icon"><i class="fas fa-cloud"></i></div>
-          <div class="sk-name">Salesforce Clouds</div>
-        </div>
-        <div class="sk-tags">
-          <span class="sk-tag hot">Sales Cloud</span><span class="sk-tag hot">Health Cloud</span>
-          <span class="sk-tag hot">Experience Cloud</span>
-          <span class="sk-tag">Lead Management</span><span class="sk-tag">Opportunity Mgmt</span>
-          <span class="sk-tag">Patient Management</span><span class="sk-tag">Provider Mgmt</span>
-          <span class="sk-tag">Care Plans</span><span class="sk-tag">Clinical Encounters</span>
-        </div>
-      </div>
-      <div class="skill-box" data-aos="fade-up" data-aos-delay="0">
-        <div class="skill-box-head">
-          <div class="sk-icon"><i class="fas fa-plug"></i></div>
-          <div class="sk-name">Integration &amp; APIs</div>
-        </div>
-        <div class="sk-tags">
-          <span class="sk-tag hot">REST API</span><span class="sk-tag hot">JWT Auth</span>
-          <span class="sk-tag hot">Webhooks</span><span class="sk-tag hot">Platform Events</span>
-          <span class="sk-tag">SOAP API</span><span class="sk-tag">JSON</span>
-          <span class="sk-tag">HTTP Callouts</span><span class="sk-tag">External Credentials</span>
-          <span class="sk-tag">Governor Limits</span>
-        </div>
-      </div>
-      <div class="skill-box" data-aos="fade-up" data-aos-delay="70">
-        <div class="skill-box-head">
-          <div class="sk-icon"><i class="fab fa-aws"></i></div>
-          <div class="sk-name">Cloud &amp; Technologies</div>
-        </div>
-        <div class="sk-tags">
-          <span class="sk-tag hot">AWS Lambda</span><span class="sk-tag hot">DynamoDB</span>
-          <span class="sk-tag">AWS Secrets Manager</span>
-          <span class="sk-tag">JavaScript</span><span class="sk-tag">HTML / CSS</span>
-          <span class="sk-tag">Python</span><span class="sk-tag">C++</span>
-          <span class="sk-tag">OOP</span><span class="sk-tag">Git</span><span class="sk-tag">Postman</span>
-        </div>
-      </div>
-      <div class="skill-box" data-aos="fade-up" data-aos-delay="140">
-        <div class="skill-box-head">
-          <div class="sk-icon"><i class="fas fa-chart-bar"></i></div>
-          <div class="sk-name">Data Analysis</div>
-        </div>
-        <div class="sk-tags">
-          <span class="sk-tag">SQL</span><span class="sk-tag">Power BI</span>
-          <span class="sk-tag">DAX</span><span class="sk-tag">Python (Pandas)</span>
-          <span class="sk-tag">NumPy</span><span class="sk-tag">Advanced Excel</span>
-          <span class="sk-tag">EDA</span><span class="sk-tag">Power Query</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ EXPERIENCE ══════════ -->
-<section class="sf-sec" id="experience">
-  <div class="container">
-    <div class="sec-head" data-aos="fade-up">
-      <span class="sec-eye">Experience</span>
-      <div class="divider"></div>
-      <h2 class="sec-title">Work History</h2>
-    </div>
-    <div class="timeline">
-      <div class="tl-item" data-aos="fade-up">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-period">May 2026 – Present · Full-time</div>
-          <div class="tl-role">Software Engineer Trainee – Salesforce Developer</div>
-          <div class="tl-company">Cloudy Coders · Noida, Uttar Pradesh</div>
-          <ul class="tl-bullets">
-            <li>Develop custom Salesforce solutions using Apex, LWC, SOQL, Flows, and Salesforce CRM configuration</li>
-            <li>Build bulkified Apex Triggers and Handler classes using Maps, Sets, and optimized SOQL queries</li>
-            <li>Implement Record-Triggered and Screen Flows for business process automation and validation</li>
-            <li>Develop Asynchronous Apex using Batch, Queueable, Future, and Scheduled Apex for data processing</li>
-            <li>Contribute to Experience Cloud, REST API integrations, JWT authentication, and WhatsApp Cloud API</li>
-            <li>Work with AWS Lambda, Webhooks, DynamoDB, and third-party integrations for API communication</li>
-          </ul>
-          <div class="tl-tech">
-            <span class="tl-tag">Apex</span><span class="tl-tag">LWC</span>
-            <span class="tl-tag">Experience Cloud</span><span class="tl-tag">REST API</span>
-            <span class="tl-tag">JWT</span><span class="tl-tag">AWS Lambda</span>
-            <span class="tl-tag">Platform Events</span><span class="tl-tag">Webhooks</span>
-          </div>
-        </div>
-      </div>
-      <div class="tl-item" data-aos="fade-up" data-aos-delay="100">
-        <div class="tl-dot dim"></div>
-        <div class="tl-card">
-          <div class="tl-period">Mar 2025 – May 2025 · Internship</div>
-          <div class="tl-role">Data Analyst Intern</div>
-          <div class="tl-company">Cognifyz Technologies · Nagpur</div>
-          <ul class="tl-bullets">
-            <li>Processed and analyzed 10,000+ restaurant records using Pandas and Python to identify cuisine preferences, pricing patterns, and city-level trends, increasing data-driven insights by 30%</li>
-            <li>Performed EDA and correlation analysis using Python and SQL, improving insight accuracy by 25% across ratings, votes, and service feature datasets</li>
-          </ul>
-          <div class="tl-tech">
-            <span class="tl-tag">Python</span><span class="tl-tag">Pandas</span>
-            <span class="tl-tag">SQL</span><span class="tl-tag">EDA</span><span class="tl-tag">Matplotlib</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ STATS BAND ══════════ -->
-<div class="stats-band">
-  <div class="container">
-    <div class="stats-row">
-      <div class="stat" data-aos="fade-up">
-        <span class="stat-n">7+</span>
-        <div class="stat-l">Months SF Experience</div>
-      </div>
-      <div class="stat" data-aos="fade-up" data-aos-delay="70">
-        <span class="stat-n">5+</span>
-        <div class="stat-l">Projects Built</div>
-      </div>
-      <div class="stat" data-aos="fade-up" data-aos-delay="140">
-        <span class="stat-n">25+</span>
-        <div class="stat-l">Technical Skills</div>
-      </div>
-      <div class="stat" data-aos="fade-up" data-aos-delay="210">
-        <span class="stat-n">8.5</span>
-        <div class="stat-l">CGPA (B.Tech)</div>
-      </div>
+<!-- STATS -->
+<div class="sband">
+  <div class="wrap">
+    <div class="srow">
+      <div class="sitem" data-aos="fade-up"><span class="sn" data-count="7">0</span><div class="sl">Months SF Experience</div></div>
+      <div class="sitem" data-aos="fade-up" data-aos-delay="80"><span class="sn" data-count="5">0</span><div class="sl">Projects Built</div></div>
+      <div class="sitem" data-aos="fade-up" data-aos-delay="160"><span class="sn" data-count="25">0</span><div class="sl">Technical Skills</div></div>
+      <div class="sitem" data-aos="fade-up" data-aos-delay="240"><span class="sn">8.5</span><div class="sl">CGPA – B.Tech</div></div>
     </div>
   </div>
 </div>
 
-<!-- ══════════ PROJECTS ══════════ -->
-<section class="sf-sec sf-sec-alt" id="projects">
-  <div class="container">
-    <div class="sec-head" data-aos="fade-up">
-      <span class="sec-eye">Projects</span>
-      <div class="divider"></div>
-      <h2 class="sec-title">What I've Built</h2>
-      <p class="sec-sub">Salesforce enterprise integrations, Experience Cloud portals, and data analytics work.</p>
-    </div>
-
-    <!-- Salesforce Projects -->
-    <div class="sub-label" data-aos="fade-up">Salesforce Projects</div>
-    <div class="proj-grid" style="margin-bottom: 2.5rem;">
-      <div class="proj-card feat" data-aos="fade-up" data-aos-delay="0">
-        <div class="proj-head">
-          <div style="display:flex;gap:0.7rem;align-items:center;">
-            <div class="proj-icon pi-sf"><i class="fas fa-cloud" style="color:#fff"></i></div>
-            <span class="proj-badge pb-sf">Salesforce</span>
-          </div>
-          <div class="proj-links">
-            <a href="https://github.com/Amit-Soni1325" class="proj-link" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-          </div>
+<!-- ABOUT -->
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="ag">
+      <div>
+        <div class="sh" data-aos="fade-up">
+          <span class="eye">About Me</span>
+          <div class="dg"></div>
+          <h2 class="stitle">The Developer<br>Behind the Cloud</h2>
         </div>
-        <div class="proj-title">Ignite Central – Supplier Assessment Integration</div>
-        <div class="proj-desc">Enterprise Experience Cloud portal for supplier onboarding, application management, assessments, and document handling. Integrated SuRGEIQ via REST APIs for participant provisioning, assessment sync, and PDF report retrieval. Built JWT-based SSO, Queueable/Batch/Scheduled Apex, and Platform Events for secure async processing. Configured Permission Sets, Custom Permissions, and Apex Sharing for multi-tier security.</div>
-        <div class="proj-stack">
-          <span class="st">Apex</span><span class="st">LWC</span><span class="st">Experience Cloud</span>
-          <span class="st">REST API</span><span class="st">JWT / SSO</span><span class="st">Batch Apex</span>
-          <span class="st">Platform Events</span><span class="st">Permission Sets</span>
-        </div>
-      </div>
-
-      <div class="proj-card feat" data-aos="fade-up" data-aos-delay="100">
-        <div class="proj-head">
-          <div style="display:flex;gap:0.7rem;align-items:center;">
-            <div class="proj-icon pi-wa"><i class="fab fa-whatsapp" style="color:#fff"></i></div>
-            <span class="proj-badge pb-sf">Integration</span>
-          </div>
-          <div class="proj-links">
-            <a href="https://github.com/Amit-Soni1325" class="proj-link" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-          </div>
-        </div>
-        <div class="proj-title">WhatsApp – Salesforce Integration</div>
-        <div class="proj-desc">Full-stack WhatsApp Business API integration within Salesforce. Handles inbound webhook processing, Lead/Contact matching, automated Lead creation, and conversation history directly on Salesforce records. Built on AWS Lambda middleware with DynamoDB tenant mapping and AWS Secrets Manager for secure WhatsApp Cloud API communication.</div>
-        <div class="proj-stack">
-          <span class="st">Apex</span><span class="st">LWC</span><span class="st">REST API</span>
-          <span class="st">Webhooks</span><span class="st">AWS Lambda</span>
-          <span class="st">DynamoDB</span><span class="st">WhatsApp Cloud API</span>
-          <span class="st">AWS Secrets Manager</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Data Analytics Projects -->
-    <div class="sub-label" data-aos="fade-up">Data Analytics Projects</div>
-    <div class="proj-grid">
-      <div class="proj-card" data-aos="fade-up" data-aos-delay="0">
-        <div class="proj-head">
-          <div style="display:flex;gap:0.7rem;align-items:center;">
-            <div class="proj-icon pi-bi"><i class="fas fa-chart-pie" style="color:#fff"></i></div>
-            <span class="proj-badge pb-da">Power BI</span>
-          </div>
-          <div class="proj-links">
-            <a href="https://github.com/Amit-Soni1325/Business_Insights_360-main?tab=readme-ov-file" class="proj-link" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://app.powerbi.com/view?r=eyJrIjoiYTY5Zjc3OTYtNTQ3OC00M2JhLTg5ODEtYzc4OWQ3NDFjNDZmIiwidCI6IjE1MWVhN2FjLTBjNTctNDdhYy05Y2IzLTQ3NzFhYmMyMGZiOSJ9" class="proj-link" target="_blank" title="Live"><i class="fas fa-external-link-alt"></i></a>
-          </div>
-        </div>
-        <div class="proj-title">Business Insights 360</div>
-        <div class="proj-desc">Multi-dimensional Power BI dashboard for AtliQ Hardware providing executive-level insights across finance, sales, supply chain, marketing, and customer analytics. Enabled data-driven decision-making with interactive drill-throughs and cross-page filters.</div>
-        <div class="proj-stack">
-          <span class="st">Power BI</span><span class="st">SQL</span><span class="st">DAX</span>
-          <span class="st">Advanced Excel</span><span class="st">Power Query</span>
-        </div>
-      </div>
-
-      <div class="proj-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="proj-head">
-          <div style="display:flex;gap:0.7rem;align-items:center;">
-            <div class="proj-icon pi-bi" style="background:linear-gradient(135deg,#8B5CF6,#6D28D9)"><i class="fas fa-flask" style="color:#fff"></i></div>
-            <span class="proj-badge pb-da">Python EDA</span>
-          </div>
-          <div class="proj-links">
-            <a href="https://github.com/Amit-Soni1325/Cognifyz-Tech-Internship-Project/blob/main/README.md" class="proj-link" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://github.com/Amit-Soni1325/Cognifyz-Tech-Internship-Project/blob/main/Level%202%20Task%201%2C2%2C3%2C4.ipynb" class="proj-link" target="_blank" title="Notebook"><i class="fas fa-external-link-alt"></i></a>
-          </div>
-        </div>
-        <div class="proj-title">Restaurant Data Analysis – Cognifyz Internship</div>
-        <div class="proj-desc">Identified key restaurant rating drivers using EDA and correlation analysis on 10,000+ records. Supported findings with 15+ visualizations in Python. Increased data-driven insight accuracy by 25–30%.</div>
-        <div class="proj-stack">
-          <span class="st">Python</span><span class="st">Pandas</span><span class="st">NumPy</span>
-          <span class="st">Matplotlib</span><span class="st">SQL</span><span class="st">EDA</span>
-        </div>
-      </div>
-
-      <div class="proj-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="proj-head">
-          <div style="display:flex;gap:0.7rem;align-items:center;">
-            <div class="proj-icon pi-bi" style="background:linear-gradient(135deg,#059669,#047857)"><i class="fas fa-table" style="color:#fff"></i></div>
-            <span class="proj-badge pb-da">Excel</span>
-          </div>
-          <div class="proj-links">
-            <a href="https://github.com/Amit-Soni1325/Excel_Sales_Analytics" class="proj-link" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://github.com/Amit-Soni1325/Excel_Sales_Analytics/blob/main/Customer%20Performance%20Report.pdf" class="proj-link" target="_blank" title="Report"><i class="fas fa-external-link-alt"></i></a>
-          </div>
-        </div>
-        <div class="proj-title">Sales &amp; Finance Analytics – AtliQ Hardware</div>
-        <div class="proj-desc">Sales and finance analytics workbook delivering data-driven insights for strategic business growth. Includes customer performance reports, market analysis, and P&amp;L statements across markets, divisions, and time periods.</div>
-        <div class="proj-stack">
-          <span class="st">Advanced Excel</span><span class="st">Power Query</span>
-          <span class="st">Pivot Tables</span><span class="st">DAX</span><span class="st">Power Pivot</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ CERTIFICATIONS ══════════ -->
-<section class="sf-sec" id="certifications">
-  <div class="container">
-    <div class="sec-head" data-aos="fade-up">
-      <span class="sec-eye">Credentials</span>
-      <div class="divider"></div>
-      <h2 class="sec-title">Certifications &amp; Education</h2>
-    </div>
-    <div class="certs-grid">
-      <div class="cert-card" data-aos="fade-up">
-        <div class="cert-ico"><i class="fas fa-award"></i></div>
-        <div>
-          <div class="cert-t">Salesforce Programming Architect</div>
-          <div class="cert-by">TechForce Academy</div>
-          <div class="cert-dt">June 2025</div>
-        </div>
-      </div>
-      <div class="cert-card" data-aos="fade-up" data-aos-delay="80">
-        <div class="cert-ico"><i class="fas fa-cloud"></i></div>
-        <div>
-          <div class="cert-t">Fundamentals of Salesforce &amp; Internship</div>
-          <div class="cert-by">TechForce Academy</div>
-          <div class="cert-dt">September 2024</div>
-        </div>
-      </div>
-      <div class="cert-card" data-aos="fade-up" data-aos-delay="160">
-        <div class="cert-ico gold"><i class="fas fa-graduation-cap"></i></div>
-        <div>
-          <div class="cert-t">B.Tech – Artificial Intelligence &amp; Data Science</div>
-          <div class="cert-by">Arya College of Engineering &amp; IT, Jaipur</div>
-          <div class="cert-dt">2022 – 2026 · CGPA: 8.5 / 10.0</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ CONTACT ══════════ -->
-<section class="sf-sec sf-sec-alt" id="contact">
-  <div class="container">
-    <div class="sec-head" data-aos="fade-up">
-      <span class="sec-eye">Get in Touch</span>
-      <div class="divider"></div>
-      <h2 class="sec-title">Let's Connect</h2>
-    </div>
-    <div class="contact-grid">
-      <div class="contact-list" data-aos="fade-up">
-        <div class="contact-row">
-          <div class="cr-icon"><i class="fas fa-map-marker-alt"></i></div>
-          <div><div class="cr-lbl">Location</div><div class="cr-val">Jaipur, Rajasthan, India</div></div>
-        </div>
-        <div class="contact-row">
-          <div class="cr-icon"><i class="fas fa-phone"></i></div>
-          <div><div class="cr-lbl">Phone</div><div class="cr-val">+91 7976843035</div></div>
-        </div>
-        <div class="contact-row">
-          <div class="cr-icon"><i class="fas fa-envelope"></i></div>
-          <div><div class="cr-lbl">Email</div><div class="cr-val">amitsoni2552088@gmail.com</div></div>
-        </div>
-        <div class="contact-row">
-          <div class="cr-icon"><i class="fab fa-linkedin"></i></div>
-          <div><div class="cr-lbl">LinkedIn</div><div class="cr-val">linkedin.com/in/amit-soni-893885260</div></div>
-        </div>
-        <div class="contact-row">
-          <div class="cr-icon"><i class="fab fa-github"></i></div>
-          <div><div class="cr-lbl">GitHub</div><div class="cr-val">github.com/Amit-Soni1325</div></div>
+        <div class="bio" data-aos="fade-up" data-aos-delay="80">
+          <p>I'm a <span class="hl">Salesforce Developer</span> at <span class="hlb">Cloudy Coders</span> with 7+ months of hands-on enterprise development. My core expertise is <span class="hlb">Apex, Lightning Web Components (LWC), and third-party API integrations</span> — from bulkified triggers and asynchronous processing to full REST API integrations with JWT authentication.</p>
+          <p>I've shipped production Salesforce solutions including an <span class="hl">Experience Cloud supplier portal</span> (Ignite Central) with <span class="hlc">JWT-based SSO, Platform Events, and Queueable/Batch/Scheduled Apex</span>, and a <span class="hl">WhatsApp–Salesforce integration</span> powered by <span class="hlp">AWS Lambda, DynamoDB, and Webhook processing</span>.</p>
+          <p>I work confidently across <span class="hlb">Sales Cloud</span> (Lead &amp; Opportunity management), <span class="hlb">Health Cloud</span> (Patient Management, Care Plans, Provider Management), and <span class="hlb">Experience Cloud</span> portal development — covering their core data models, permission architecture, and business processes.</p>
+          <p>Pursuing <span class="hlg">Salesforce Certified Administrator</span> and <span class="hlg">Platform Developer I</span> certifications. Passionate about applying <span class="hl">AI tools, cloud-native patterns, and modern DevOps</span> to build scalable enterprise CRM solutions.</p>
         </div>
       </div>
       <div data-aos="fade-left" data-aos-delay="120">
-        <div class="cta-box">
-          <div class="cta-title">Open to Global Opportunities</div>
-          <div class="cta-desc">Looking for Salesforce Developer roles — full-time or contract, remote or on-site. If you're building something on Salesforce and need an Apex/LWC specialist with real integration experience, I'd love to talk.</div>
-          <div class="social-row">
-            <a href="https://www.linkedin.com/in/amit-soni-893885260/" class="soc-link" target="_blank">
-              <i class="fab fa-linkedin"></i> LinkedIn
-            </a>
-            <a href="https://github.com/Amit-Soni1325" class="soc-link" target="_blank">
-              <i class="fab fa-github"></i> GitHub
-            </a>
+        <div class="acard">
+          <div class="arow">
+            <div class="ai"><div class="l">Role</div><div class="v">Salesforce Developer</div></div>
+            <div class="ai"><div class="l">Company</div><div class="v">Cloudy Coders</div></div>
+            <div class="ai"><div class="l">Experience</div><div class="v">7+ Months</div></div>
+            <div class="ai"><div class="l">Education</div><div class="v">B.Tech AI &amp; DS</div></div>
+            <div class="ai"><div class="l">Location</div><div class="v">Jaipur, India</div></div>
+            <div class="ai"><div class="l">CGPA</div><div class="v">8.5 / 10.0</div></div>
           </div>
-          <a href="https://drive.google.com/file/d/1WCB7wudP1NA2lLQOnNzKIyjAghQo2ytf/view?usp=drivesdk" class="btn-primary" target="_blank">
-            <i class="fas fa-file-alt"></i> Download Resume
-          </a>
+          <div class="cpl">Core Expertise</div>
+          <div>
+            <span class="cpill">Apex</span><span class="cpill">LWC</span><span class="cpill">SOQL</span>
+            <span class="cpill">Triggers</span><span class="cpill">Batch Apex</span><span class="cpill">Queueable Apex</span>
+            <span class="cpill">REST API</span><span class="cpill">JWT / SSO</span><span class="cpill">Platform Events</span>
+            <span class="cpill">Flows</span><span class="cpill">Named Credentials</span>
+            <span class="cpill">Sales Cloud</span><span class="cpill">Health Cloud</span><span class="cpill">Experience Cloud</span>
+            <span class="cpill">AWS Lambda</span><span class="cpill">DynamoDB</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ FOOTER ══════════ -->
-<footer class="sf-footer">
-  <div class="container">
+<!-- SKILLS -->
+<section class="sec sec-alt" id="skills">
+  <div class="wrap">
+    <div class="sh" data-aos="fade-up">
+      <span class="eye">Technical Skills</span>
+      <div class="dg"></div>
+      <h2 class="stitle">Complete Salesforce<br>Technology Stack</h2>
+      <p class="ssub">From core Apex development to cloud integrations — every layer covered.</p>
+    </div>
+    <div class="kg">
+      <div class="kcard" data-aos="fade-up" data-aos-delay="0">
+        <div class="kh"><div class="ki b"><i class="fas fa-code"></i></div><div class="kn">Salesforce Development</div></div>
+        <div class="kt">
+          <span class="ktag h">Apex</span><span class="ktag h">LWC</span><span class="ktag h">SOQL / SOSL</span>
+          <span class="ktag">Triggers &amp; Handlers</span><span class="ktag">Batch Apex</span>
+          <span class="ktag">Queueable Apex</span><span class="ktag">Scheduled Apex</span>
+          <span class="ktag">Future Methods</span><span class="ktag">Test Classes (90%+)</span>
+          <span class="ktag">Custom Metadata Types</span><span class="ktag">Named Credentials</span>
+          <span class="ktag">External Credentials</span><span class="ktag">Change Sets</span>
+        </div>
+      </div>
+      <div class="kcard" data-aos="fade-up" data-aos-delay="80">
+        <div class="kh"><div class="ki p"><i class="fas fa-cogs"></i></div><div class="kn">Salesforce Administration</div></div>
+        <div class="kt">
+          <span class="ktag pp">Record-Triggered Flows</span><span class="ktag pp">Screen Flows</span>
+          <span class="ktag pp">Permission Sets</span>
+          <span class="ktag">Validation Rules</span><span class="ktag">Custom Objects &amp; Fields</span>
+          <span class="ktag">Data Modeling &amp; Relationships</span>
+          <span class="ktag">Record Types</span><span class="ktag">OWD Sharing Model</span>
+          <span class="ktag">Profiles &amp; FLS</span><span class="ktag">Sharing Rules</span>
+          <span class="ktag">Apex Sharing &amp; Manual Shares</span>
+        </div>
+      </div>
+      <div class="kcard" data-aos="fade-up" data-aos-delay="160">
+        <div class="kh"><div class="ki c"><i class="fas fa-cloud"></i></div><div class="kn">Salesforce Clouds</div></div>
+        <div class="kt">
+          <span class="ktag cc">Sales Cloud</span><span class="ktag cc">Health Cloud</span><span class="ktag cc">Experience Cloud</span>
+          <span class="ktag">Lead &amp; Opportunity Management</span>
+          <span class="ktag">Patient Management</span><span class="ktag">Provider Management</span>
+          <span class="ktag">Care Plans</span><span class="ktag">Clinical Encounters</span>
+          <span class="ktag">Community Portal Dev</span>
+        </div>
+      </div>
+      <div class="kcard" data-aos="fade-up" data-aos-delay="0">
+        <div class="kh"><div class="ki b"><i class="fas fa-plug"></i></div><div class="kn">Integration &amp; APIs</div></div>
+        <div class="kt">
+          <span class="ktag h">REST API</span><span class="ktag h">JWT / SSO</span>
+          <span class="ktag h">Webhooks</span><span class="ktag h">Platform Events</span>
+          <span class="ktag">SOAP API</span><span class="ktag">HTTP Callouts</span>
+          <span class="ktag">Outbound Messages</span><span class="ktag">Governor Limits</span>
+          <span class="ktag">JSON Parsing</span><span class="ktag">Bulkification Patterns</span>
+        </div>
+      </div>
+      <div class="kcard" data-aos="fade-up" data-aos-delay="80">
+        <div class="kh"><div class="ki gr"><i class="fab fa-aws"></i></div><div class="kn">Cloud &amp; DevOps</div></div>
+        <div class="kt">
+          <span class="ktag gg">AWS Lambda</span><span class="ktag gg">DynamoDB</span>
+          <span class="ktag gg">AWS Secrets Manager</span>
+          <span class="ktag">Postman API Testing</span>
+          <span class="ktag">Git &amp; GitHub</span>
+          <span class="ktag">JavaScript / HTML / CSS</span>
+          <span class="ktag">Python</span><span class="ktag">C++</span><span class="ktag">OOP</span>
+        </div>
+      </div>
+      <div class="kcard" data-aos="fade-up" data-aos-delay="160">
+        <div class="kh"><div class="ki g"><i class="fas fa-chart-bar"></i></div><div class="kn">Data Analysis</div></div>
+        <div class="kt">
+          <span class="ktag go">SQL</span><span class="ktag go">Power BI</span>
+          <span class="ktag go">DAX</span><span class="ktag go">Advanced Excel</span>
+          <span class="ktag">Python (Pandas &amp; NumPy)</span>
+          <span class="ktag">Matplotlib / Seaborn</span>
+          <span class="ktag">EDA</span><span class="ktag">Power Query</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="sec" id="experience">
+  <div class="wrap">
+    <div class="sh" data-aos="fade-up">
+      <span class="eye">Work Experience</span>
+      <div class="dg"></div>
+      <h2 class="stitle">Professional Journey</h2>
+    </div>
+    <div class="tl">
+      <div class="tli" data-aos="fade-up">
+        <div class="tldot"></div>
+        <div class="tlcard">
+          <div class="tlwhen"><i class="fas fa-calendar-alt"></i> May 2026 – Present · Full-time</div>
+          <div class="tlr">Software Engineer Trainee – Salesforce Developer</div>
+          <div class="tlco"><i class="fas fa-building"></i> Cloudy Coders Pvt. Ltd. · Noida, Uttar Pradesh</div>
+          <ul class="tll">
+            <li>Develop and deploy custom Salesforce solutions using <strong>Apex, LWC, SOQL, Flows, and CRM configuration</strong></li>
+            <li>Build bulkified Apex Triggers and Handler classes using Maps, Sets, and governor-limit-aware SOQL</li>
+            <li>Implement <strong>Record-Triggered and Screen Flows</strong> for business process automation and cross-object validation</li>
+            <li>Develop Asynchronous Apex using <strong>Batch, Queueable, Future, and Scheduled Apex</strong> for large-scale data processing</li>
+            <li>Integrate Salesforce with third-party systems via <strong>REST API, JWT Authentication, and Webhooks</strong></li>
+            <li>Build AWS-powered integrations using <strong>Lambda functions, DynamoDB, and Secrets Manager</strong></li>
+            <li>Configure multi-tier security using <strong>Permission Sets, Custom Permissions, OWD, and Apex Sharing</strong></li>
+          </ul>
+          <div class="tltags">
+            <span class="tltag">Apex</span><span class="tltag">LWC</span><span class="tltag">Experience Cloud</span>
+            <span class="tltag">REST API</span><span class="tltag">JWT / SSO</span>
+            <span class="tltag">AWS Lambda</span><span class="tltag">Platform Events</span><span class="tltag">Webhooks</span>
+          </div>
+        </div>
+      </div>
+      <div class="tli" data-aos="fade-up" data-aos-delay="120">
+        <div class="tldot dm"></div>
+        <div class="tlcard">
+          <div class="tlwhen"><i class="fas fa-calendar-alt"></i> Mar 2025 – May 2025 · Internship</div>
+          <div class="tlr">Data Analyst Intern</div>
+          <div class="tlco"><i class="fas fa-building"></i> Cognifyz Technologies · Nagpur</div>
+          <ul class="tll">
+            <li>Processed and analyzed <strong>10,000+ restaurant records</strong> using Pandas and Python — increased data-driven insight generation by 30%</li>
+            <li>Performed EDA and correlation analysis using Python and SQL, improving analytics accuracy by 25%</li>
+            <li>Delivered 15+ visualizations (Matplotlib/Seaborn) presented to the internship panel</li>
+          </ul>
+          <div class="tltags">
+            <span class="tltag">Python</span><span class="tltag">Pandas</span>
+            <span class="tltag">SQL</span><span class="tltag">EDA</span><span class="tltag">Matplotlib</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="sec sec-alt" id="projects">
+  <div class="wrap">
+    <div class="sh" data-aos="fade-up">
+      <span class="eye">Featured Projects</span>
+      <div class="dg"></div>
+      <h2 class="stitle">What I've Built</h2>
+      <p class="ssub">Enterprise Salesforce integrations, Experience Cloud portals, and production data analytics solutions.</p>
+    </div>
+
+    <div class="plab" data-aos="fade-up">Salesforce Projects</div>
+    <div class="pgrid-feat">
+      <!-- Ignite Central -->
+      <div class="pcard-feat" data-aos="fade-up" data-aos-delay="0">
+        <div class="pf-banner"></div>
+        <div class="pf-body">
+          <div class="pf-top">
+            <div>
+              <div class="pf-ico" style="background:linear-gradient(135deg,#0176D3,#06B6D4)"><i class="fas fa-cloud" style="color:#fff"></i></div>
+              <span class="pf-badge pb-sf">Salesforce · Enterprise</span>
+            </div>
+            <div class="pf-links">
+              <a href="https://github.com/Amit-Soni1325" class="plk" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <div class="pt">Ignite Central – Supplier Assessment Integration</div>
+          <div class="pd">Enterprise <strong>Experience Cloud portal</strong> for multi-tier supplier onboarding, application management, assessments, and document handling. Integrated with <strong>SuRGEIQ</strong> via REST APIs for participant provisioning, assessment synchronization, and PDF report retrieval. Built <strong>JWT-based SSO</strong>, Queueable/Batch/Scheduled Apex, and Platform Events for secure async communication. Configured <strong>Permission Sets, Custom Permissions, and Apex Sharing</strong> for multi-tier access security.</div>
+          <div class="pimpact">
+            <span class="pimp">500+ Supplier Accounts</span>
+            <span class="pimp b">JWT / SSO Enabled</span>
+            <span class="pimp g">Platform Events Driven</span>
+          </div>
+          <div class="ps">
+            <span class="stk">Apex</span><span class="stk">LWC</span><span class="stk">Experience Cloud</span>
+            <span class="stk">REST API</span><span class="stk">JWT / SSO</span><span class="stk">Batch Apex</span>
+            <span class="stk">Platform Events</span><span class="stk">Queueable Apex</span><span class="stk">Permission Sets</span>
+          </div>
+        </div>
+      </div>
+      <!-- WhatsApp -->
+      <div class="pcard-feat" data-aos="fade-up" data-aos-delay="120">
+        <div class="pf-banner" style="background:linear-gradient(135deg,#25D366,#128C7E)"></div>
+        <div class="pf-body">
+          <div class="pf-top">
+            <div>
+              <div class="pf-ico" style="background:linear-gradient(135deg,#25D366,#128C7E)"><i class="fab fa-whatsapp" style="color:#fff"></i></div>
+              <span class="pf-badge pb-int">Integration · AWS</span>
+            </div>
+            <div class="pf-links">
+              <a href="https://github.com/Amit-Soni1325" class="plk" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <div class="pt">WhatsApp – Salesforce Real-Time Integration</div>
+          <div class="pd">Full-stack <strong>WhatsApp Business API integration</strong> within Salesforce for real-time customer conversation management on Lead and Contact records. Implemented <strong>Webhook processing</strong> for inbound messages, automated Lead/Contact matching, and conversation history. Built on <strong>AWS Lambda middleware</strong> with DynamoDB tenant config mapping and <strong>AWS Secrets Manager</strong> for secure credential management.</div>
+          <div class="pimpact">
+            <span class="pimp">Real-time 2-way Messaging</span>
+            <span class="pimp b">AWS Lambda Powered</span>
+            <span class="pimp g">Auto Lead Creation</span>
+          </div>
+          <div class="ps">
+            <span class="stk">Apex</span><span class="stk">LWC</span><span class="stk">REST API</span>
+            <span class="stk">Webhooks</span><span class="stk">AWS Lambda</span>
+            <span class="stk">DynamoDB</span><span class="stk">WhatsApp Cloud API</span><span class="stk">Secrets Manager</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="plab" data-aos="fade-up">Data Analytics Projects</div>
+    <div class="pgrid-da">
+      <div class="pcard" data-aos="fade-up" data-aos-delay="0">
+        <div class="pf-banner" style="background:linear-gradient(135deg,#F59E0B,#FBBF24)"></div>
+        <div class="pf-body">
+          <div class="pf-top" style="margin-bottom:.7rem">
+            <div><div class="pf-ico" style="background:linear-gradient(135deg,#F59E0B,#D97706)"><i class="fas fa-chart-pie" style="color:#fff"></i></div><span class="pf-badge pb-da" style="margin-top:.4rem">Power BI · Dashboard</span></div>
+            <div class="pf-links">
+              <a href="https://github.com/Amit-Soni1325/Business_Insights_360-main?tab=readme-ov-file" class="plk" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+              <a href="https://app.powerbi.com/view?r=eyJrIjoiYTY5Zjc3OTYtNTQ3OC00M2JhLTg5ODEtYzc4OWQ3NDFjNDZmIiwidCI6IjE1MWVhN2FjLTBjNTctNDdhYy05Y2IzLTQ3NzFhYmMyMGZiOSJ9" class="plk" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <div class="pt">Business Insights 360 – AtliQ Hardware</div>
+          <div class="pd">Multi-dimensional Power BI dashboard delivering executive insights across Finance, Sales, Supply Chain, Marketing, and Customer Analytics with interactive drill-throughs and DAX measures.</div>
+          <div class="ps"><span class="stk">Power BI</span><span class="stk">SQL</span><span class="stk">DAX</span><span class="stk">Advanced Excel</span><span class="stk">Power Query</span></div>
+        </div>
+      </div>
+      <div class="pcard" data-aos="fade-up" data-aos-delay="90">
+        <div class="pf-banner" style="background:linear-gradient(135deg,#8B5CF6,#6D28D9)"></div>
+        <div class="pf-body">
+          <div class="pf-top" style="margin-bottom:.7rem">
+            <div><div class="pf-ico" style="background:linear-gradient(135deg,#8B5CF6,#6D28D9)"><i class="fas fa-flask" style="color:#fff"></i></div><span class="pf-badge" style="background:#F3F0FF;color:#6D28D9;border:1px solid rgba(109,40,217,0.25);margin-top:.4rem">Python · EDA</span></div>
+            <div class="pf-links">
+              <a href="https://github.com/Amit-Soni1325/Cognifyz-Tech-Internship-Project/blob/main/README.md" class="plk" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+              <a href="https://github.com/Amit-Soni1325/Cognifyz-Tech-Internship-Project/blob/main/Level%202%20Task%201%2C2%2C3%2C4.ipynb" class="plk" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <div class="pt">Restaurant Data Analysis – Cognifyz Internship</div>
+          <div class="pd">EDA on 10,000+ restaurant records. Identified key rating drivers with 15+ visualizations. Improved insight accuracy by 25–30% through statistical correlation analysis.</div>
+          <div class="ps"><span class="stk">Python</span><span class="stk">Pandas</span><span class="stk">NumPy</span><span class="stk">Matplotlib</span><span class="stk">SQL</span><span class="stk">EDA</span></div>
+        </div>
+      </div>
+      <div class="pcard" data-aos="fade-up" data-aos-delay="180">
+        <div class="pf-banner" style="background:linear-gradient(135deg,#059669,#047857)"></div>
+        <div class="pf-body">
+          <div class="pf-top" style="margin-bottom:.7rem">
+            <div><div class="pf-ico" style="background:linear-gradient(135deg,#059669,#047857)"><i class="fas fa-table" style="color:#fff"></i></div><span class="pf-badge" style="background:#DCFCE7;color:#15803D;border:1px solid rgba(22,163,74,0.25);margin-top:.4rem">Excel · Analytics</span></div>
+            <div class="pf-links">
+              <a href="https://github.com/Amit-Soni1325/Excel_Sales_Analytics" class="plk" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+              <a href="https://github.com/Amit-Soni1325/Excel_Sales_Analytics/blob/main/Customer%20Performance%20Report.pdf" class="plk" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <div class="pt">Sales &amp; Finance Analytics – AtliQ Hardware</div>
+          <div class="pd">Comprehensive sales and finance analytics workbook with customer performance reports, market analysis, and P&amp;L statements across markets, divisions, and time periods.</div>
+          <div class="ps"><span class="stk">Advanced Excel</span><span class="stk">Power Query</span><span class="stk">Pivot Tables</span><span class="stk">DAX</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section class="sec" id="certifications">
+  <div class="wrap">
+    <div class="sh" data-aos="fade-up">
+      <span class="eye">Credentials</span>
+      <div class="dg"></div>
+      <h2 class="stitle">Certifications &amp; Education</h2>
+    </div>
+    <div class="cgrid">
+      <div class="ccard" data-aos="fade-up">
+        <div class="cico b"><i class="fas fa-certificate"></i></div>
+        <div><div class="ct">Salesforce Programming Architect</div><div class="cby">TechForce Academy</div><div class="cdt">June 2025</div></div>
+      </div>
+      <div class="ccard" data-aos="fade-up" data-aos-delay="90">
+        <div class="cico b"><i class="fas fa-cloud"></i></div>
+        <div><div class="ct">Fundamentals of Salesforce &amp; Internship</div><div class="cby">TechForce Academy</div><div class="cdt">September 2024</div></div>
+      </div>
+      <div class="ccard" data-aos="fade-up" data-aos-delay="180">
+        <div class="cico g"><i class="fas fa-graduation-cap"></i></div>
+        <div><div class="ct">B.Tech – Artificial Intelligence &amp; Data Science</div><div class="cby">Arya College of Engineering &amp; IT, Jaipur</div><div class="cdt">2022 – 2026 · CGPA: 8.5 / 10.0</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec sec-alt" id="contact">
+  <div class="wrap">
+    <div class="sh" data-aos="fade-up">
+      <span class="eye">Get in Touch</span>
+      <div class="dg"></div>
+      <h2 class="stitle">Let's Build Together</h2>
+    </div>
+    <div class="contg">
+      <div class="clist" data-aos="fade-up">
+        <div class="crow"><div class="cico2"><i class="fas fa-map-marker-alt"></i></div><div><div class="clbl">Location</div><div class="cval">Noida, Sector 63, Uttar Pradesh</div></div></div>
+        <div class="crow"><div class="cico2"><i class="fas fa-phone"></i></div><div><div class="clbl">Phone</div><div class="cval">+91 7976843035</div></div></div>
+        <div class="crow"><div class="cico2"><i class="fas fa-envelope"></i></div><div><div class="clbl">Email</div><div class="cval">amitsoni2552088@gmail.com</div></div></div>
+        <div class="crow"><div class="cico2"><i class="fab fa-linkedin"></i></div><div><div class="clbl">LinkedIn</div><div class="cval">linkedin.com/in/amit-soni-893885260</div></div></div>
+        <div class="crow"><div class="cico2"><i class="fab fa-github"></i></div><div><div class="clbl">GitHub</div><div class="cval">github.com/Amit-Soni1325</div></div></div>
+      </div>
+      <div data-aos="fade-left" data-aos-delay="120">
+        <div class="ctabox">
+          <div class="ctah">Open to Global Opportunities</div>
+          <div class="ctad">Looking for Salesforce Developer roles — full-time or contract, remote or on-site. If you're building enterprise CRM solutions and need an Apex/LWC developer with real integration experience across Sales Cloud, Health Cloud, and Experience Cloud, I'd love to connect.</div>
+          <div class="socr">
+            <a href="https://www.linkedin.com/in/amit-soni-893885260/" class="soc" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://github.com/Amit-Soni1325" class="soc" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+          </div>
+          <a href="https://drive.google.com/file/d/15DnHbiu8FSXtJiOIVL_rlRI_hnNukvWY/view" class="btn-white" target="_blank" rel="noopener"><i class="fas fa-file-alt"></i> Download Resume</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap">
     <p>© <span id="yr"></span> Amit Soni · Salesforce Developer · Jaipur, India ·
-      <a href="https://www.linkedin.com/in/amit-soni-893885260/" target="_blank">LinkedIn</a> ·
-      <a href="https://github.com/Amit-Soni1325" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/amit-soni-893885260/" target="_blank" rel="noopener">LinkedIn</a> ·
+      <a href="https://github.com/Amit-Soni1325" target="_blank" rel="noopener">GitHub</a>
     </p>
   </div>
 </footer>
@@ -981,43 +805,79 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/aos.js"></script>
 <script>
-  // Year
-  document.getElementById('yr').textContent = new Date().getFullYear();
+AOS.init({duration:600,easing:'ease-out',once:true,offset:60});
+document.getElementById('yr').textContent = new Date().getFullYear();
 
-  // AOS
-  AOS.init({ duration: 580, easing: 'ease-out', once: true, offset: 55 });
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('sc', scrollY > 50));
 
-  // Navbar scroll effect
-  const nav = document.getElementById('sf-nav');
-  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40));
+// Hamburger
+const ham = document.getElementById('ham');
+const menu = document.getElementById('nmenu');
+ham.addEventListener('click', () => menu.classList.toggle('open'));
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
 
-  // Hamburger
-  const ham = document.getElementById('hamburger');
-  const links = document.getElementById('nav-links');
-  ham.addEventListener('click', () => links.classList.toggle('open'));
-  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
-
-  // Typed text
-  const texts = ['Salesforce Developer','Apex & LWC Specialist','REST API Integrations','Sales Cloud Builder','Health Cloud Expert','Experience Cloud Dev'];
-  let ti = 0, ci = 0, del = false;
-  const el = document.getElementById('typed');
-  function tick() {
-    const t = texts[ti];
-    el.textContent = del ? t.slice(0, --ci) : t.slice(0, ++ci);
-    let spd = del ? 55 : 95;
-    if (!del && ci === t.length) { spd = 2200; del = true; }
-    else if (del && ci === 0) { del = false; ti = (ti + 1) % texts.length; spd = 280; }
-    setTimeout(tick, spd);
-  }
-  setTimeout(tick, 600);
-
-  // Smooth scroll
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const tgt = document.querySelector(a.getAttribute('href'));
-      if (tgt) { e.preventDefault(); window.scrollTo({ top: tgt.getBoundingClientRect().top + scrollY - 68, behavior: 'smooth' }); }
-    });
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); window.scrollTo({top: t.getBoundingClientRect().top + scrollY - 72, behavior: 'smooth'}); }
   });
+});
+
+// Typed text
+const texts = [
+  'Salesforce Developer · Cloudy Coders',
+  'Apex & LWC Specialist',
+  'REST API Integration Expert',
+  'Sales Cloud Developer',
+  'Health Cloud Specialist',
+  'Experience Cloud Builder',
+  'AWS Lambda + Salesforce Developer'
+];
+let ti = 0, ci = 0, del = false;
+const el = document.getElementById('typed');
+function tick() {
+  const t = texts[ti];
+  el.textContent = del ? t.slice(0, --ci) : t.slice(0, ++ci);
+  let spd = del ? 45 : 85;
+  if (!del && ci === t.length) { spd = 2200; del = true; }
+  else if (del && ci === 0) { del = false; ti = (ti + 1) % texts.length; spd = 250; }
+  setTimeout(tick, spd);
+}
+setTimeout(tick, 800);
+
+// Counter animation
+function animateCounter(el, target, duration) {
+  let start = 0;
+  const step = target / (duration / 16);
+  const timer = setInterval(() => {
+    start += step;
+    if (start >= target) { el.textContent = target; clearInterval(timer); }
+    else el.textContent = Math.floor(start);
+  }, 16);
+}
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateCounter(e.target, parseInt(e.target.dataset.count), 1200);
+      obs.unobserve(e.target);
+    }
+  });
+}, {threshold: 0.5});
+document.querySelectorAll('[data-count]').forEach(c => obs.observe(c));
+
+// Card hover tilt
+document.querySelectorAll('.kcard, .pcard, .pcard-feat, .ccard').forEach(c => {
+  c.addEventListener('mousemove', e => {
+    const r = c.getBoundingClientRect();
+    const x = e.clientX - r.left - r.width / 2;
+    const y = e.clientY - r.top - r.height / 2;
+    c.style.transform = `perspective(900px) rotateX(${-y/r.height*7}deg) rotateY(${x/r.width*7}deg) translateY(-3px)`;
+  });
+  c.addEventListener('mouseleave', () => { c.style.transform = ''; });
+});
 </script>
 </body>
 </html>
